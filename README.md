@@ -44,4 +44,4 @@ Then open http://localhost:8000.
 
 **Vercel**: import the repo, choose Framework "Other", leave the build command and output directory empty.
 
-**After the first deploy**, put the full URL of `assets/og-cover.jpg` in the `og:image` tags of `index.html`, `about.html` and `proyecto.html`, so link previews show the image.
+Live site: https://diegopralexander.github.io/portfolio/ . The `og:image` tags use the full URL of `assets/og-cover.jpg`; update them if the address changes (e.g. a custom domain).
