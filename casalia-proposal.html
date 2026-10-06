@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casalia · Brand proposal by Diego Prado</title>
+  <meta name="description" content="Brand proposal for Casalia, short and mid-term stays in Buenos Aires, by Diego Prado. Illustrative concept.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       Casalia brand proposal by Diego Prado (rebuilt from the Claude Design file
+       "Casalia Landing.dc.html", responsive). Self-contained: own fonts + colors.
+       ========================================================================== */
+    :root {
+      --cream: #F8F4EE;
+      --sand: #F4EEE6;
+      --paper: #FBF7F1;
+      --olive: #5E5A3C;
+      --ink: #4A4636;
+      --muted: #8C8470;
+      --soft: #6B6558;
+      --blush: #E8CFC4;
+      --clay: #A8806B;
+      --line: #C9BFAE;
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "Hanken Grotesk", system-ui, sans-serif;
+      --pad: clamp(20px, 3.9vw, 56px);
+      color-scheme: light;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, p { margin: 0; }
+    .serif { font-family: var(--serif); }
+    .it { font-family: var(--serif); font-style: italic; }
+    .caps { text-transform: uppercase; letter-spacing: .04em; }
+    .big { font-weight: 400; text-transform: uppercase; letter-spacing: -.025em; line-height: .95; color: var(--olive); font-size: clamp(2.6rem, 6.1vw, 5.5rem); }
+    .big-it { font-family: var(--serif); font-style: italic; line-height: 1; color: var(--olive); font-size: clamp(2.3rem, 5.3vw, 4.75rem); margin-top: 4px; }
+    .side-note { font-size: clamp(.95rem, 1.2vw, 1.06rem); line-height: 1.5; max-width: 300px; }
+    .btn { display: inline-block; padding: clamp(16px, 2.2vw, 32px) clamp(28px, 5.3vw, 76px); font-size: 1.06rem; letter-spacing: .02em; text-transform: uppercase; border-radius: 2px; background: var(--paper); color: var(--ink); transition: background-color .2s ease, transform .2s ease; }
+    .btn:hover { background: #fff; transform: translateY(-1px); }
+
+    /* 01 Hero */
+    .hero { position: relative; min-height: min(900px, 100svh); overflow: hidden; background: #CDBFAE; color: var(--paper); display: flex; flex-direction: column; }
+    .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(60,48,40,.55) 0%, rgba(60,48,40,.2) 45%, rgba(60,48,40,.5) 100%); }
+    .hero > * { position: relative; z-index: 1; }
+    .hero > img { position: absolute; z-index: 0; }
+    .hero::after { z-index: 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(20px, 2.5vw, 36px) var(--pad); }
+    .logo { font-family: var(--serif); font-style: italic; font-size: clamp(2rem, 3vw, 2.75rem); }
+    .nav-links { display: flex; gap: clamp(20px, 3.6vw, 52px); font-size: .94rem; letter-spacing: .04em; text-transform: uppercase; }
+    .nav .btn { padding: 18px 36px; font-size: .94rem; letter-spacing: .04em; }
+    .hero-copy { display: flex; justify-content: space-between; gap: 32px; padding: clamp(40px, 8vw, 110px) var(--pad) 40px; }
+    .hero h1 { font-weight: 400; font-size: clamp(3rem, 6.1vw, 5.5rem); line-height: 1; letter-spacing: -.025em; text-transform: uppercase; }
+    .hero h1 .it { display: block; text-transform: none; letter-spacing: 0; line-height: 1.05; margin-top: 4px; }
+    .hero-side { max-width: 340px; text-align: right; font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.5; }
+    .booking { margin: auto var(--pad) var(--pad); background: var(--paper); color: var(--ink); border-radius: 28px; padding: clamp(22px, 2.5vw, 36px) clamp(20px, 2.8vw, 40px) clamp(24px, 2.8vw, 40px); box-shadow: rgba(60,48,40,.25) 0 20px 60px; }
+    .booking-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    .booking-head .serif { font-size: clamp(1.9rem, 3.6vw, 3.25rem); line-height: 1; }
+    .booking-head span { font-size: 1.06rem; }
+    .booking-bar { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; align-items: center; background: #fff; border: 1px solid #E9E1D5; border-radius: 18px; overflow: hidden; }
+    .field { padding: 22px 28px; border-right: 1px solid #E9E1D5; }
+    .field:nth-child(4) { border-right: 0; }
+    .field small { display: block; font-size: .81rem; letter-spacing: .08em; text-transform: uppercase; color: #A39A86; margin-bottom: 6px; }
+    .field span { font-size: 1.25rem; color: var(--muted); }
+    .field span.set { color: var(--ink); }
+    .search { margin: 12px; padding: 26px 52px; border-radius: 14px; background: var(--blush); font-size: 1.06rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 400; transition: filter .2s ease; }
+    .search:hover { filter: brightness(.96); }
+
+    /* 02 Philosophy */
+    .philosophy { display: grid; grid-template-columns: minmax(0, 880px) 1fr; gap: clamp(32px, 4.4vw, 64px); padding: 96px 0 96px var(--pad); background: var(--cream); }
+    .eyebrow { font-size: .94rem; letter-spacing: .12em; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+    .philosophy .big { font-size: clamp(2.6rem, 5.8vw, 5.25rem); line-height: .97; }
+    .philosophy .big-it { font-size: clamp(2.8rem, 6.4vw, 5.75rem); }
+    .philosophy p.lead { margin-top: clamp(32px, 4vw, 56px); max-width: 700px; font-size: clamp(1.1rem, 1.5vw, 1.375rem); line-height: 1.55; }
+    .pillars { margin-top: clamp(40px, 5vw, 72px); display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+    .pillars div { border-top: 1px solid var(--line); padding-top: 22px; }
+    .pillars .it { font-size: clamp(1.6rem, 2.5vw, 2.25rem); line-height: 1.1; color: var(--olive); margin-bottom: 12px; }
+    .pillars p { font-size: 1.125rem; line-height: 1.5; }
+    .philosophy figure { margin: 0; border-radius: 2px 0 0 2px; overflow: hidden; box-shadow: rgba(94,90,60,.12) 0 8px 30px; min-height: 420px; }
+    .philosophy figure img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* 03 Residences */
+    .residences { background: var(--cream); }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 70px var(--pad) 0; }
+    .section-head .side-note { text-align: right; margin-top: 6px; }
+    .tabs { display: flex; gap: 12px; padding: clamp(32px, 4vw, 56px) var(--pad) clamp(36px, 4.5vw, 60px); flex-wrap: wrap; }
+    .tabs button { font: inherit; font-size: 1rem; letter-spacing: .04em; text-transform: uppercase; padding: 22px 52px; border: 1px solid var(--olive); border-radius: 2px; background: transparent; color: var(--ink); cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+    .tabs button[aria-pressed="true"] { background: var(--olive); color: var(--cream); }
+    .feature { position: relative; min-height: 580px; color: var(--paper); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(60px, 10vw, 150px) var(--pad) 50px; }
+    .feature > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 68%; }
+    .feature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(60,48,40,.55) 0%, rgba(60,48,40,0) 55%), linear-gradient(0deg, rgba(60,48,40,.45) 0%, rgba(60,48,40,0) 40%); }
+    .feature > * { position: relative; z-index: 1; }
+    .feature > img { position: absolute; z-index: 0; }
+    .feature::after { z-index: 0; }
+    .feature-copy { max-width: 600px; }
+    .feature-copy small { display: block; font-size: 1.125rem; margin-bottom: 6px; }
+    .feature-copy .name { font-size: clamp(2.6rem, 5.3vw, 4.75rem); line-height: 1; text-transform: uppercase; letter-spacing: -.02em; font-weight: 400; }
+    .feature-copy p { font-size: clamp(1.1rem, 1.5vw, 1.31rem); line-height: 1.5; margin: 24px 0 36px; }
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; font-size: 1rem; color: var(--ink); }
+    .chips span { background: var(--paper); padding: 10px 18px; border-radius: 2px; }
+    .feature-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-top: 48px; }
+    .feature-foot .serif { font-size: 1.6rem; letter-spacing: .02em; }
+
+    /* 03b Stays */
+    .stays { background: var(--sand); padding: 100px var(--pad) 110px; }
+    .stays .section-head { padding: 0 0 56px; align-items: flex-end; }
+    .stay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .stay-card .photo { height: clamp(300px, 29vw, 420px); border-radius: 4px; overflow: hidden; background: var(--blush); }
+    .stay-card .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .stay-card:hover .photo img { transform: scale(1.04); }
+    .stay-card .serif { font-size: clamp(2rem, 2.9vw, 2.6rem); line-height: 1.1; color: var(--olive); margin: 24px 0 8px; }
+    .stay-card .meta { font-size: 1.125rem; line-height: 1.45; color: var(--soft); min-height: 52px; }
+    .stay-card .rating { font-size: 1.06rem; color: var(--muted); margin-top: 12px; }
+
+    /* 04 Gallery */
+    .gallery { background: var(--sand); padding: 110px 0 56px; }
+    .gallery .section-head { padding-top: 0; }
+    .gallery-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 1fr); grid-template-columns: 1.9fr 1fr 1fr; gap: 24px; padding: 64px var(--pad) 0; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+    .gallery-track::-webkit-scrollbar { display: none; }
+    .g-card { background: #fff; border-radius: 2px; box-shadow: rgba(94,90,60,.08) 0 4px 20px; padding: 24px; height: 400px; scroll-snap-align: start; }
+    .g-card.wide { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .g-card.wide .copy { display: flex; flex-direction: column; justify-content: space-between; }
+    .g-card.tall { display: flex; flex-direction: column; gap: 20px; }
+    .g-card .label { font-size: .94rem; letter-spacing: .04em; text-transform: uppercase; color: var(--olive); line-height: 1.4; }
+    .g-card .it { font-size: clamp(1.5rem, 2.1vw, 1.9rem); line-height: 1.2; color: var(--olive); }
+    .g-card .pic { border-radius: 2px; overflow: hidden; min-height: 0; flex: 1; }
+    .g-card .pic img { width: 100%; height: 100%; object-fit: cover; }
+    .round-btn { width: 84px; height: 84px; border: 1px solid var(--olive); border-radius: 50%; display: grid; place-items: center; font-size: 1.75rem; color: var(--olive); background: transparent; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+    .round-btn:hover { background: var(--olive); color: var(--cream); }
+    .gallery-nav { display: flex; justify-content: space-between; padding: 56px var(--pad) 0; }
+
+    /* 05 Review */
+    .review { position: relative; background: var(--cream); padding: clamp(80px, 12vw, 170px) clamp(24px, 20.8vw, 300px) clamp(80px, 9vw, 130px); overflow: hidden; }
+    .review .quote-mark { position: absolute; left: clamp(16px, 6.7vw, 96px); top: 40px; font-family: var(--serif); font-size: clamp(9rem, 18vw, 16.25rem); line-height: 1; color: var(--blush); pointer-events: none; }
+    .review blockquote { position: relative; margin: 0; max-width: 1000px; font-family: var(--serif); font-size: clamp(1.9rem, 4.2vw, 3.75rem); line-height: 1.18; letter-spacing: -.01em; }
+    .review-foot { position: relative; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: clamp(40px, 5vw, 72px); }
+    .stars { display: flex; gap: 6px; }
+    .stars span { width: 38px; height: 38px; background: #B98B76; color: #fff; display: grid; place-items: center; font-size: 1.375rem; }
+    .review-foot a { font-size: 1.25rem; color: #8C6450; border-bottom: 1px solid #8C6450; padding-bottom: 3px; }
+
+    /* 06 Contact */
+    .contact { position: relative; min-height: 560px; color: var(--paper); background: #6B6250; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 110px var(--pad) var(--pad); }
+    .contact > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
+    .contact::after { content: ""; position: absolute; inset: 0; background: rgba(70,56,46,.55); }
+    .contact > * { position: relative; z-index: 1; }
+    .contact > img { position: absolute; z-index: 0; }
+    .contact::after { z-index: 0; }
+    .contact p { max-width: 620px; font-family: var(--serif); font-size: clamp(1.8rem, 2.9vw, 2.6rem); line-height: 1.25; }
+    .contact-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-top: 56px; }
+
+    /* Back to the case study */
+    .concept-tag { position: fixed; left: 16px; bottom: 16px; z-index: 50; font: 400 .8rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; background: rgba(74,70,54,.9); color: var(--paper); padding: 10px 14px; border-radius: 999px; }
+    .concept-tag:hover { background: var(--ink); }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .booking-bar { grid-template-columns: 1fr 1fr; }
+      .field:nth-child(2) { border-right: 0; }
+      .field:nth-child(-n+2) { border-bottom: 1px solid #E9E1D5; }
+      .search { grid-column: 1 / -1; text-align: center; }
+      .philosophy { grid-template-columns: 1fr; padding-right: var(--pad); }
+      .philosophy figure { min-height: 0; aspect-ratio: 4 / 3; border-radius: 2px; }
+      .stay-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .nav .btn { padding: 14px 20px; font-size: .8rem; }
+      .hero-copy { flex-direction: column; }
+      .hero-side { text-align: left; }
+      .booking { border-radius: 20px; }
+      .booking-bar { grid-template-columns: 1fr; }
+      .field { border-right: 0; border-bottom: 1px solid #E9E1D5; }
+      .pillars { grid-template-columns: 1fr; gap: 24px; }
+      .section-head, .stays .section-head { flex-direction: column; align-items: flex-start; }
+      .section-head .side-note { text-align: left; }
+      .tabs button { padding: 16px 28px; }
+      .feature-foot, .contact-foot { flex-direction: column; align-items: flex-start; }
+      .stay-grid { grid-template-columns: 1fr; }
+      .gallery-track { grid-template-columns: none; grid-auto-columns: 85%; }
+      .g-card.wide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+      .round-btn { width: 60px; height: 60px; font-size: 1.4rem; }
+    }
+    /* shown as a preview inside the case study: no scrollbar, no back link */
+    html.is-preview, html.is-preview body { overflow: hidden; }
+    html.is-preview .concept-tag { display: none; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+  <!-- 01 Hero -->
+  <section class="hero" id="top">
+    <img src="assets/images/projects/casalia/14-buenos-aires.jpg" alt="Classic Buenos Aires architecture">
+    <nav class="nav" aria-label="Casalia">
+      <span class="logo">Casalia</span>
+      <div class="nav-links">
+        <a href="#philosophy">Philosophy</a>
+        <a href="#stays">Stays</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn" href="#stays">Book a stay</a>
+    </nav>
+    <div class="hero-copy">
+      <h1>Home,<span class="it">for however long.</span></h1>
+      <p class="hero-side">Your stay in Buenos Aires, from a few nights to several months.</p>
+    </div>
+    <div class="booking">
+      <div class="booking-head">
+        <div class="serif">Book a stay in one of our <i>finest homes</i></div>
+        <span>Short and mid-term stays, fully serviced</span>
+      </div>
+      <div class="booking-bar">
+        <div class="field"><small>Where</small><span class="set">Buenos Aires</span></div>
+        <div class="field"><small>Check in</small><span>Add dates</span></div>
+        <div class="field"><small>Check out</small><span>Add dates</span></div>
+        <div class="field"><small>Guests</small><span>Add guests</span></div>
+        <a class="search" href="#stays">Search stays</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Philosophy -->
+  <section class="philosophy" id="philosophy">
+    <div>
+      <p class="eyebrow">Our philosophy</p>
+      <h2 class="big">A stay should<br>never feel</h2>
+      <div class="big-it">temporary.</div>
+      <p class="lead">Whether you are here for a weekend, a month or a season, we believe every stay deserves the same care: a home with character, and service that feels personal from the day you arrive to the day you leave.</p>
+      <div class="pillars">
+        <div><div class="it">A home that fits you.</div><p>Choose your home by your style, your rhythm and what you need from it.</p></div>
+        <div><div class="it">Ready when you are.</div><p>Each home arrives fully furnished and serviced. All you have to do is unpack.</p></div>
+        <div><div class="it">With you throughout.</div><p>Our service does not end at check-in. We stay close for the length of your stay, however long that is.</p></div>
+      </div>
+    </div>
+    <figure><img src="assets/images/projects/casalia/02-bedroom-view.jpg" alt="Bedroom with floor-to-ceiling windows and a view of the church" loading="lazy"></figure>
+  </section>
+
+  <!-- 03 Residences -->
+  <section class="residences">
+    <div class="section-head">
+      <div><h2 class="big">Which stay</h2><div class="big-it">is right for you?</div></div>
+      <p class="side-note">Select your stay length and receive a curated selection tailored to your dates.</p>
+    </div>
+    <div class="tabs" role="group" aria-label="Stay length">
+      <button type="button" aria-pressed="true">Nights</button>
+      <button type="button" aria-pressed="false">Weeks</button>
+      <button type="button" aria-pressed="false">Months</button>
+    </div>
+    <div class="feature">
+      <img src="assets/images/projects/casalia/05-terrace.jpg" alt="Guests on a private terrace" loading="lazy">
+      <div class="feature-copy">
+        <small>Recoleta, Buenos Aires</small>
+        <div class="name">The Lorette</div>
+        <p>A boutique studio with its own private patio, an oasis for slow mornings and long afternoons.</p>
+        <div class="chips"><span>Private patio</span><span>Boutique studio</span><span>Fully serviced</span></div>
+      </div>
+      <div class="feature-foot">
+        <span class="serif">★ 4.8 · 5 reviews</span>
+        <a class="btn" href="#stays">View stay</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03b Stays -->
+  <section class="stays" id="stays">
+    <div class="section-head">
+      <div><h2 class="big">Our stays</h2><div class="big-it">across the city</div></div>
+      <p class="side-note">Boutique studios and apartments in Buenos Aires’ most characterful neighborhoods.</p>
+    </div>
+    <div class="stay-grid">
+      <article class="stay-card">
+        <div class="photo"><img src="assets/images/projects/casalia/05-terrace.jpg" alt="The Lorette terrace" loading="lazy"></div>
+        <div class="serif">The Lorette</div>
+        <div class="meta">Recoleta | Boutique studio | Private patio oasis</div>
+        <div class="rating">★ 4.8 · 5 reviews</div>
+      </article>
+      <article class="stay-card">
+        <div class="photo"><img src="assets/images/projects/casalia/15-casa-elena.jpg" alt="Casa Elena living room" loading="lazy"></div>
+        <div class="serif">Casa Elena</div>
+        <div class="meta">Balvanera | Work and stay | Studio</div>
+        <div class="rating">★ 4.78 · 18 reviews</div>
+      </article>
+      <article class="stay-card">
+        <div class="photo"><img src="assets/images/projects/casalia/07-blue-chair.jpg" alt="Merlot &amp; Indigo living room" loading="lazy"></div>
+        <div class="serif">Merlot &amp; Indigo</div>
+        <div class="meta">Villa Crespo | 1 modern bedroom | Balcony and urban life</div>
+        <div class="rating">★ 4.33 · 18 reviews</div>
+      </article>
+      <article class="stay-card">
+        <div class="photo"><img src="assets/images/projects/casalia/02-bedroom-view.jpg" alt="Blue Baires bedroom with city views" loading="lazy"></div>
+        <div class="serif">Blue Baires</div>
+        <div class="meta">Bright suite | Floor-to-ceiling city views</div>
+        <div class="rating">New listing</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04 Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="section-head">
+      <div><h2 class="big">The gallery</h2><div class="big-it">&amp; every light</div></div>
+      <p class="side-note">Interiors, rooftop and pool, as they are lived in.</p>
+    </div>
+    <div class="gallery-track">
+      <div class="g-card wide">
+        <div class="copy"><div class="label">Rooftop<br>pool</div><div class="it">Long lanes of turquoise above the city skyline</div></div>
+        <div class="pic"><img src="assets/images/projects/casalia/10-rooftop-pool.jpg" alt="Rooftop pool above the city" loading="lazy"></div>
+      </div>
+      <div class="g-card tall">
+        <div class="pic"><img src="assets/images/projects/casalia/01-living-view.jpg" alt="Living room with flowers by the window" loading="lazy"></div>
+        <div class="label">Living room</div>
+      </div>
+      <div class="g-card tall">
+        <div class="pic"><img src="assets/images/projects/casalia/09-rooftop-loungers.jpg" alt="Sun terrace with loungers" loading="lazy"></div>
+        <div class="label">Sun terrace</div>
+      </div>
+    </div>
+    <div class="gallery-nav">
+      <button class="round-btn" type="button" data-dir="-1" aria-label="Previous">←</button>
+      <button class="round-btn" type="button" data-dir="1" aria-label="Next">→</button>
+    </div>
+  </section>
+
+  <!-- 05 Review -->
+  <section class="review">
+    <div class="quote-mark" aria-hidden="true">“</div>
+    <blockquote>Arriving felt effortless. The apartment was just as pictured, full of light, and everything was ready. I would book it again without a second thought. – Camille (FR)</blockquote>
+    <div class="review-foot">
+      <div class="stars" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <a href="#stays">Read the full review of Casa Elena</a>
+    </div>
+  </section>
+
+  <!-- 06 Contact -->
+  <section class="contact" id="contact">
+    <img src="assets/images/projects/casalia/09-rooftop-loungers.jpg" alt="" loading="lazy">
+    <p>Homes chosen for their design. Furnished, serviced and ready. A weekend or a season, your stay should never feel <i>temporary.</i></p>
+    <div class="contact-foot">
+      <a class="btn" href="#top">Book your stay</a>
+      <span class="logo">Casalia</span>
+    </div>
+  </section>
+
+  <a class="concept-tag" href="proyecto.html?id=casalia">← Brand proposal by Diego Prado · Back to the case study</a>
+
+  <script>
+    if (window.self !== window.top) document.documentElement.classList.add('is-preview');
+    // Stay-length tabs (visual only in this concept)
+    document.querySelectorAll('.tabs button').forEach((b, _, all) => b.addEventListener('click', () => {
+      all.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    }));
+    // Gallery arrows scroll the cards
+    const track = document.querySelector('.gallery-track');
+    document.querySelectorAll('.gallery-nav .round-btn').forEach((btn) => btn.addEventListener('click', () => {
+      track.scrollBy({ left: Number(btn.dataset.dir) * track.clientWidth * 0.6, behavior: 'smooth' });
+    }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Flower logo (footer). Recreated from "handoff logo/flower-animation.html".
+   7.2s loop: petals bloom one by one clockwise from the top (0 to 3.2s),
+   hold, then the whole logo fades out (6.6 to 7.2s) and starts again.
+   The animation only runs while the logo is on screen (js/flower.js adds
+   .is-playing), and with "reduce motion" it shows the static flower.
+   ========================================================================== */
+
+.flower-logo {
+  --flower-size: clamp(96px, 11vw, 150px);
+  display: block;
+  width: var(--flower-size);
+  color: var(--ink, #12151a);
+}
+.flower-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: flower-out 7.2s linear infinite;
+}
+.flower-logo .p {
+  fill: currentColor;
+  transition: fill .3s ease;
+  transform-box: view-box;
+  transform-origin: 600px 900px;
+  animation: 7.2s cubic-bezier(.34, 1.56, .64, 1) infinite both;
+}
+.flower-logo .p0 { animation-name: flower-p0; }
+.flower-logo .p1 { animation-name: flower-p1; }
+.flower-logo .p2 { animation-name: flower-p2; }
+.flower-logo .p3 { animation-name: flower-p3; }
+.flower-logo .p4 { animation-name: flower-p4; }
+
+/* Paused until it scrolls into view */
+.flower-logo svg,
+.flower-logo .p { animation-play-state: paused; }
+.flower-logo.is-playing svg,
+.flower-logo.is-playing .p { animation-play-state: running; }
+
+@keyframes flower-out { 0%, 91.67% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes flower-p0 { 0%, 2.78%  { transform: scale(0); opacity: 0; } 7.64%  { opacity: 1; } 12.50%, 100% { transform: scale(1); opacity: 1; } }
+@keyframes flower-p1 { 0%, 10.42% { transform: scale(0); opacity: 0; } 15.28% { opacity: 1; } 20.14%, 100% { transform: scale(1); opacity: 1; } }
+@keyframes flower-p2 { 0%, 18.06% { transform: scale(0); opacity: 0; } 22.92% { opacity: 1; } 27.78%, 100% { transform: scale(1); opacity: 1; } }
+@keyframes flower-p3 { 0%, 25.69% { transform: scale(0); opacity: 0; } 30.56% { opacity: 1; } 35.42%, 100% { transform: scale(1); opacity: 1; } }
+@keyframes flower-p4 { 0%, 33.33% { transform: scale(0); opacity: 0; } 38.19% { opacity: 1; } 43.06%, 100% { transform: scale(1); opacity: 1; } }
+
+/* Reduced motion: static, fully bloomed */
+@media (prefers-reduced-motion: reduce) {
+  .flower-logo svg,
+  .flower-logo .p { animation: none; }
+}

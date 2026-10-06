@@ -1,0 +1,882 @@
+{
+  "_help": {
+    "what": "All project content lives here. index.html builds the Recent Works cards from this file, and proyecto.html?id=<id> builds each case study page.",
+    "order": "Cards appear sorted by 'order' (1 = first).",
+    "id": "Used in the URL: proyecto.html?id=casalia. Lowercase, no spaces. If you change it, old links stop working.",
+    "card": "cardColor = background of the card. cardInk = text color on it ('light' or 'dark'). cardStat = the big number or word shown on the card. cardStatLabel = small line under it. Optional: add \"cardImage\": \"assets/images/projects/<id>/cover.jpg\" to show an image on the card instead of the big number. With 'cardImage' set, the card shows the image (set cardInk to 'light' if the image is dark). Optional 'cardImagePosition' (e.g. \"50% 28%\") chooses which part of a tall photo shows on the card.",
+    "tags": "'What I did' pill tags shown under the info row.",
+    "cover": "Optional big picture under the tags: { \"src\", \"alt\", \"width\", \"height\" }. Image, GIF or video (.mp4/.webm). Without a cover, the numbers banner takes its place.",
+    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column.",
+    "stats": "Numbers banner. Only use verified numbers. Shown after the story (or in the cover spot if there's no cover). Empty [] removes the banner completely.",
+    "gallery": "Images or videos after the story. Files go in assets/images/projects/<id>/. Each item: { \"src\", \"alt\", \"width\", \"height\" }. Layout is automatic: wide images (width/height >= 1.3) take a full row, square or portrait images pair up two per row, in the order listed. Keep portraits in even groups between banners so none is left alone.",
+    "todo": "Any value that starts with 'TODO' is shown on the site with a dashed outline, so you can spot what still needs writing.",
+    "proposal": "Optional 'proposal' { \"eyebrow\", \"title\", \"text\", \"url\", \"cta\" }: a closing section with a live preview of a separate page (e.g. a brand proposal) and a button to open it.",
+    "facts": "sector / role / dates / location fill the info row. Rules: 'dates' = year only (e.g. 2023, or 2024 – present); 'location' = City, Country. Leave an item out to hide it.",
+    "comingSoon": "Set \"comingSoon\": true to show the card with a lock and 'Coming soon' (not clickable, and skipped by 'Next project')."
+  },
+  "projects": [
+    {
+      "id": "placement-international",
+      "order": 1,
+      "title": "Placement International",
+      "subtitle": "Content, campaigns and paid acquisition across 18 international markets.",
+      "category": "Content & Paid Social",
+      "sector": "Luxury hospitality talent",
+      "role": "Content, campaigns and paid acquisition",
+      "dates": "2024 – present",
+      "location": "Barcelona, Spain",
+      "cardColor": "#2F4F86",
+      "cardInk": "light",
+      "cardStat": "+73%",
+      "cardStatLabel": "Instagram audience growth",
+      "tags": [
+        "Content strategy",
+        "Video production",
+        "Paid social",
+        "Campaigns",
+        "Email",
+        "LinkedIn ghostwriting"
+      ],
+      "story": {
+        "headline": "At Placement, the audience is talent, not guests.",
+        "subhead": "I market careers inside luxury hotel groups across 18 international markets, on every channel where that talent spends time.",
+        "body": [
+          "I built and own the content calendar for Instagram and LinkedIn: 25 pieces of content a month per platform. I direct and personally film 6 content shoots a month with a 2-person team, script and produce every video ad, ghostwrite weekly LinkedIn thought leadership for the CEO (1,000+ new followers in a year) and co-produce livestreams with luxury hotel groups, including Four Seasons.",
+          "I also run 4–6 multi-channel campaigns a month across Meta, LinkedIn, TikTok, YouTube and email, and own paid media end to end: audience research, angle testing and ad scripts. Paid and organic run off the same calendar, so the message holds across every touchpoint."
+        ]
+      },
+      "stats": [
+        {
+          "value": "+44%",
+          "label": "Combined audience growth"
+        },
+        {
+          "value": "700+",
+          "label": "Organic leads a month"
+        },
+        {
+          "value": "2–2.5%",
+          "label": "Sustained paid CTR"
+        },
+        {
+          "value": "0.17%",
+          "label": "Newsletter unsubscribe rate vs 0.5% industry average"
+        }
+      ],
+      "gallery": [],
+      "comingSoon": true,
+      "cardImage": "assets/images/projects/placement-international/card-lanyards.jpg"
+    },
+    {
+      "id": "casalia",
+      "order": 2,
+      "title": "Casalia",
+      "subtitle": "Guest experience, brand and content for a fast-growing startup renting upscale apartments in Buenos Aires.",
+      "category": "Brand & Content Strategy",
+      "sector": "Upscale apartment rentals",
+      "role": "Social Media Strategist, promoted from Area Coordinator",
+      "dates": "2023",
+      "location": "Buenos Aires, Argentina",
+      "cardColor": "#2D5A4A",
+      "cardInk": "light",
+      "cardStat": "3.9 → 4.2",
+      "cardStatLabel": "Guest satisfaction rating",
+      "cardImage": "assets/images/projects/casalia/14-buenos-aires.jpg",
+      "tags": [
+        "Brand & content",
+        "Social media",
+        "Influencer partnerships",
+        "Paid targeting",
+        "Guest experience"
+      ],
+      "story": {
+        "subhead": "At Casalia I worked both sides: the guest at the door and the guest on the screen.",
+        "body": [
+          "Casalia offered upscale apartments in Buenos Aires for short and mid-term stays, a young brand growing fast. I began on the guest side as Area Coordinator, learning first-hand what a great stay should feel like.",
+          "Then I moved into brand and content. I set the content strategy and calendar, and led creative production, styling each shoot to create a unique narrative for every home. I also shaped the digital touchpoints, from landing pages to social, so the whole journey felt effortless."
+        ],
+        "masonry": [
+          {
+            "src": "assets/images/projects/casalia/03-living-room.jpg",
+            "alt": "Casalia living room with floor-to-ceiling windows",
+            "width": 750,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/02-bedroom-view.jpg",
+            "alt": "Casalia bedroom with a view of the church",
+            "width": 750,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/08-living-concrete.jpg",
+            "alt": "Casalia living and dining area with concrete walls",
+            "width": 802,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/01-living-view.jpg",
+            "alt": "Styled coffee table with flowers by the window",
+            "width": 750,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/07-blue-chair.jpg",
+            "alt": "Blue armchair and coffee table, styled for the shoot",
+            "width": 802,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/06-balcony.jpg",
+            "alt": "Guests on a Casalia balcony",
+            "width": 802,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/05-terrace.jpg",
+            "alt": "Guests on a Casalia rooftop terrace",
+            "width": 802,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/09-rooftop-loungers.jpg",
+            "alt": "Rooftop loungers by the pool",
+            "width": 984,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/10-rooftop-pool.jpg",
+            "alt": "Rooftop pool with city views",
+            "width": 984,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/12-sofa-matisse.jpg",
+            "alt": "Living room with a Matisse print, styled for the shoot",
+            "width": 814,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/13-kitchen.jpg",
+            "alt": "Open kitchen and living area in a Casalia apartment",
+            "width": 814,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/casalia/14-buenos-aires.jpg",
+            "alt": "Classic Buenos Aires architecture near the properties",
+            "width": 814,
+            "height": 1100
+          }
+        ]
+      },
+      "stats": [],
+      "gallery": [],
+      "proposal": {
+        "eyebrow": "My proposal for the brand",
+        "title": "Home, for however long.",
+        "text": "Beyond the work I delivered, I sketched where I believed the brand could go: a calmer, more editorial Casalia built around one idea, that a stay should never feel temporary. This landing page is that vision, from tone of voice to booking flow. Stay names, ratings and reviews are illustrative.",
+        "url": "casalia-proposal.html",
+        "cta": "View the full proposal"
+      }
+    },
+    {
+      "id": "bonafacha",
+      "order": 3,
+      "title": "Bonafacha",
+      "subtitle": "The streetwear label I founded in 2020 and launched in La Paz, Bolivia and Buenos Aires, Argentina.",
+      "category": "Founder · Creative Direction",
+      "sector": "Fashion",
+      "role": "Founder & Creative Director",
+      "dates": "2020",
+      "location": "La Paz, Bolivia · Buenos Aires, Argentina",
+      "cardColor": "#D9A030",
+      "cardInk": "light",
+      "cardStat": "90+",
+      "cardStatLabel": "Accessories sold a month",
+      "cardImage": "assets/images/projects/bonafacha/slide-09.jpg",
+      "tags": [
+        "Founder",
+        "Brand identity",
+        "Creative direction",
+        "Digital strategy",
+        "Photography",
+        "Product launches"
+      ],
+      "story": {
+        "subhead": "A streetwear label born in 2020: minimal, timeless pieces and accessories, designed to pair effortlessly with any look.",
+        "body": [
+          "Bonafacha grew out of my love for fashion and a simple idea: accessories with a clean, minimal look that work for every occasion. We launched in La Paz, Bolivia, and Buenos Aires, Argentina, as a team of two, with me leading the strategic and creative side.",
+          "We reached monthly sales of more than 90 accessories and sold more than 1,000 garments a year, with one goal behind every drop: inspire each person to discover and express their own style, whatever the occasion."
+        ],
+        "pillarsTitle": "From idea to execution",
+        "pillars": [
+          {
+            "title": "Brand identity & design",
+            "text": "I shaped every visual and strategic side of Bonafacha: a clean, pared-back identity built to carry the essence of the brand."
+          },
+          {
+            "title": "Digital strategy",
+            "text": "Wear to Differ became the concept behind our digital campaigns, built to position the label in the market and drive sales."
+          },
+          {
+            "title": "Art direction & photography",
+            "text": "Every image was shot by me and the team. Each session shows the creative process, from art direction to working the camera."
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/images/projects/bonafacha/drop-179-we-need-beauty.webp",
+            "alt": "Drop N.179: We Need Beauty tee",
+            "width": 1080,
+            "height": 1350
+          },
+          {
+            "src": "assets/images/projects/bonafacha/drop-179-hopeless-romantic.webp",
+            "alt": "Drop N.179: Hopeless Romantic tee",
+            "width": 1080,
+            "height": 1350
+          },
+          {
+            "src": "assets/images/projects/bonafacha/drop-179-faces-of-love.webp",
+            "alt": "Drop N.179: Faces of Love tee",
+            "width": 1080,
+            "height": 1350
+          }
+        ],
+        "carousel": [
+          {
+            "src": "assets/images/projects/bonafacha/slide-01.jpg",
+            "alt": "Portrait in a yellow jacket and black cap",
+            "width": 600,
+            "height": 901
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-02.jpg",
+            "alt": "Skater in a yellow jacket against a blue wall",
+            "width": 600,
+            "height": 901
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-03.jpg",
+            "alt": "Hopeless Romantic tee, back view",
+            "width": 880,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-04.jpg",
+            "alt": "White Bonafacha logo tee with a pearl necklace",
+            "width": 733,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-05.jpg",
+            "alt": "Faces of Love tee with tulips",
+            "width": 880,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-06.jpg",
+            "alt": "We Need Beauty tee, back view",
+            "width": 880,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-07.jpg",
+            "alt": "White Bonafacha logo tee, close-up",
+            "width": 880,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-08.jpg",
+            "alt": "Wear to Differ cap Story",
+            "width": 618,
+            "height": 1100
+          },
+          {
+            "src": "assets/images/projects/bonafacha/slide-09.jpg",
+            "alt": "Black Bonafacha cap, back view",
+            "width": 600,
+            "height": 1067
+          },
+          {
+            "src": "assets/images/projects/bonafacha/04-drop-179-flatlay.jpg",
+            "alt": "Drop N.179 tee flat lay on concrete",
+            "width": 736,
+            "height": 1006
+          }
+        ],
+        "banner": {
+          "src": "assets/images/projects/bonafacha/streetwear-deck.jpg",
+          "alt": "Minimal, timeless garments for men and women. Limited edition collections 2023",
+          "width": 2000,
+          "height": 1125
+        },
+        "strips": [
+          [
+            {
+              "src": "assets/images/projects/bonafacha/05-editorial-bw.jpg",
+              "alt": "Black and white editorial portrait with the Bonafacha logo",
+              "width": 900,
+              "height": 1351
+            },
+            {
+              "src": "assets/images/projects/bonafacha/bw-1-bucket-hat.jpg",
+              "alt": "Black and white portrait in a Bonafacha bucket hat",
+              "width": 618,
+              "height": 1100
+            },
+            {
+              "src": "assets/images/projects/bonafacha/14-bw-court.jpg",
+              "alt": "Black and white lifestyle shot on a court",
+              "width": 900,
+              "height": 1600
+            }
+          ],
+          [
+            {
+              "src": "assets/images/projects/bonafacha/cap-1.jpg",
+              "alt": "Black Wild Free cap",
+              "width": 500,
+              "height": 889
+            },
+            {
+              "src": "assets/images/projects/bonafacha/cap-2.jpg",
+              "alt": "New collection white caps",
+              "width": 600,
+              "height": 1067
+            },
+            {
+              "src": "assets/images/projects/bonafacha/cap-3.jpg",
+              "alt": "Denim cap with an embroidered sun",
+              "width": 618,
+              "height": 1100
+            },
+            {
+              "src": "assets/images/projects/bonafacha/cap-4.jpg",
+              "alt": "Blue cap with Bonafacha embroidered on the back",
+              "width": 600,
+              "height": 901
+            },
+            {
+              "src": "assets/images/projects/bonafacha/cap-5.jpg",
+              "alt": "Black Bonafacha cap with a yellow jacket",
+              "width": 600,
+              "height": 1067
+            },
+            {
+              "src": "assets/images/projects/bonafacha/cap-6.jpg",
+              "alt": "Do Better cap on a stack of caps",
+              "width": 600,
+              "height": 901
+            }
+          ]
+        ]
+      },
+      "stats": [
+        {
+          "value": "90+",
+          "label": "Accessories sold a month"
+        },
+        {
+          "value": "1,000+",
+          "label": "Garments sold in a year"
+        },
+        {
+          "value": "2",
+          "label": "Markets: Bolivia and Argentina"
+        }
+      ],
+      "gallery": [
+        {
+          "src": "assets/images/projects/bonafacha/07-posters.jpg",
+          "alt": "Campaign posters: Wear to differ",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "cardImagePosition": "50% 28%"
+    },
+    {
+      "id": "through-the-lens",
+      "order": 4,
+      "title": "Through the Lens",
+      "subtitle": "Some photographs I’ve taken in the last months. From fashion to nature and documentary, every photo chases the same thing: authentic moments, raw emotion, and life as it truly is.",
+      "category": "Photography",
+      "cardColor": "#2B2A28",
+      "cardInk": "light",
+      "cardStat": "Lens",
+      "cardStatLabel": "Fashion · Concerts · Nature · Documentary",
+      "tags": [],
+      "story": {
+        "masonry": [],
+        "worksTitle": "Fashion projects",
+        "works": [
+          {
+            "title": "Fashion portfolio",
+            "category": "Fashion · Editorial · Brand collaborations",
+            "text": "A selection of my fashion and editorial work, from brand collaborations to independent shoots.",
+            "url": "https://readymag.website/u3158857317/6464654/",
+            "cta": "View all projects on Readymag",
+            "image": {
+              "src": "assets/images/projects/through-the-lens/fashion-cover.jpg",
+              "alt": "Fashion portrait in a taupe suit against a red wall",
+              "width": 867,
+              "height": 1300
+            }
+          }
+        ],
+        "journalTitle": "Photo journal",
+        "journal": [
+          {
+            "src": "assets/images/projects/through-the-lens/journal/01.jpg",
+            "alt": "Photo journal, frame 01",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/02.jpg",
+            "alt": "Photo journal, frame 02",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/03.jpg",
+            "alt": "Photo journal, frame 03",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/04.jpg",
+            "alt": "Photo journal, frame 04",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/05.jpg",
+            "alt": "Photo journal, frame 05",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/06.jpg",
+            "alt": "Photo journal, frame 06",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/07.jpg",
+            "alt": "Photo journal, frame 07",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/08.jpg",
+            "alt": "Photo journal, frame 08",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/09.jpg",
+            "alt": "Photo journal, frame 09",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/10.jpg",
+            "alt": "Photo journal, frame 10",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/11.jpg",
+            "alt": "Photo journal, frame 11",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/12.jpg",
+            "alt": "Photo journal, frame 12",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/13.jpg",
+            "alt": "Photo journal, frame 13",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/14.jpg",
+            "alt": "Photo journal, frame 14",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/15.jpg",
+            "alt": "Photo journal, frame 15",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/16.jpg",
+            "alt": "Photo journal, frame 16",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/17.jpg",
+            "alt": "Photo journal, frame 17",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/18.jpg",
+            "alt": "Photo journal, frame 18",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/19.jpg",
+            "alt": "Photo journal, frame 19",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/20.jpg",
+            "alt": "Photo journal, frame 20",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/21.jpg",
+            "alt": "Photo journal, frame 21",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/22.jpg",
+            "alt": "Photo journal, frame 22",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/23.jpg",
+            "alt": "Photo journal, frame 23",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/24.jpg",
+            "alt": "Photo journal, frame 24",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/25.jpg",
+            "alt": "Photo journal, frame 25",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/26.jpg",
+            "alt": "Photo journal, frame 26",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/27.jpg",
+            "alt": "Photo journal, frame 27",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/28.jpg",
+            "alt": "Photo journal, frame 28",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/29.jpg",
+            "alt": "Photo journal, frame 29",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/30.jpg",
+            "alt": "Photo journal, frame 30",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/31.jpg",
+            "alt": "Photo journal, frame 31",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/32.jpg",
+            "alt": "Photo journal, frame 32",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/33.jpg",
+            "alt": "Photo journal, frame 33",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/34.jpg",
+            "alt": "Photo journal, frame 34",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/35.jpg",
+            "alt": "Photo journal, frame 35",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/36.jpg",
+            "alt": "Photo journal, frame 36",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/37.jpg",
+            "alt": "Photo journal, frame 37",
+            "width": 1300,
+            "height": 865
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/38.jpg",
+            "alt": "Photo journal, frame 38",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/39.jpg",
+            "alt": "Photo journal, frame 39",
+            "width": 1300,
+            "height": 865
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/40.jpg",
+            "alt": "Photo journal, frame 40",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/41.jpg",
+            "alt": "Photo journal, frame 41",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/42.jpg",
+            "alt": "Photo journal, frame 42",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/43.jpg",
+            "alt": "Photo journal, frame 43",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/44.jpg",
+            "alt": "Photo journal, frame 44",
+            "width": 1300,
+            "height": 862
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/45.jpg",
+            "alt": "Photo journal, frame 45",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/46.jpg",
+            "alt": "Photo journal, frame 46",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/47.jpg",
+            "alt": "Photo journal, frame 47",
+            "width": 862,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/48.jpg",
+            "alt": "Photo journal, frame 48",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/49.jpg",
+            "alt": "Photo journal, frame 49",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/50.jpg",
+            "alt": "Photo journal, frame 50",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/51.jpg",
+            "alt": "Photo journal, frame 51",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/52.jpg",
+            "alt": "Photo journal, frame 52",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/53.jpg",
+            "alt": "Photo journal, frame 53",
+            "width": 1300,
+            "height": 866
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/54.jpg",
+            "alt": "Photo journal, frame 54",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/55.jpg",
+            "alt": "Photo journal, frame 55",
+            "width": 1300,
+            "height": 866
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/56.jpg",
+            "alt": "Photo journal, frame 56",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/57.jpg",
+            "alt": "Photo journal, frame 57",
+            "width": 1300,
+            "height": 866
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/58.jpg",
+            "alt": "Photo journal, frame 58",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/59.jpg",
+            "alt": "Photo journal, frame 59",
+            "width": 1300,
+            "height": 866
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/60.jpg",
+            "alt": "Photo journal, frame 60",
+            "width": 1300,
+            "height": 866
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/61.jpg",
+            "alt": "Photo journal, frame 61",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/62.jpg",
+            "alt": "Photo journal, frame 62",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/63.jpg",
+            "alt": "Photo journal, frame 63",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/64.jpg",
+            "alt": "Photo journal, frame 64",
+            "width": 853,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/65.jpg",
+            "alt": "Photo journal, frame 65",
+            "width": 1300,
+            "height": 853
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/66.jpg",
+            "alt": "Photo journal, frame 66",
+            "width": 1300,
+            "height": 853
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/67.jpg",
+            "alt": "Photo journal, frame 67",
+            "width": 1300,
+            "height": 853
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/68.jpg",
+            "alt": "Photo journal, frame 68",
+            "width": 853,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/69.jpg",
+            "alt": "Photo journal, frame 69",
+            "width": 853,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/70.jpg",
+            "alt": "Photo journal, frame 70",
+            "width": 866,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/71.jpg",
+            "alt": "Photo journal, frame 71",
+            "width": 1300,
+            "height": 865
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/72.jpg",
+            "alt": "Photo journal, frame 72",
+            "width": 865,
+            "height": 1300
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/73.jpg",
+            "alt": "Photo journal, frame 73",
+            "width": 1300,
+            "height": 865
+          },
+          {
+            "src": "assets/images/projects/through-the-lens/journal/74.jpg",
+            "alt": "Photo journal, frame 74",
+            "width": 752,
+            "height": 1300
+          }
+        ]
+      },
+      "stats": [],
+      "gallery": [],
+      "cardImage": "assets/images/projects/through-the-lens/journal/05.jpg"
+    }
+  ]
+}
