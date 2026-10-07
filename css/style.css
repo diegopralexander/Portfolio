@@ -865,7 +865,7 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .rs-stats dt { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1; letter-spacing: -.02em; }
 .rs-stats dd { margin: 10px 0 0; font-size: var(--fs-sm); font-weight: 600; line-height: 1.4; max-width: 24ch; }
 .rs-stats dd span { display: block; font-weight: 400; color: var(--ink-soft); font-size: var(--fs-xs); margin-top: 2px; }
-@media (min-width: 900px) { .rs-stats { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px) { .rs-stats { grid-template-columns: repeat(var(--n, 4), 1fr); } }
 .rs-chart { margin: clamp(40px, 6vw, 64px) 0 0; padding: clamp(20px, 3vw, 32px); border: 1px solid var(--line); border-radius: var(--radius); }
 .rs-chart figcaption { font-size: var(--fs-sm); font-weight: 600; margin-bottom: 20px; }
 .rs-chart ul { display: grid; gap: 14px; }
@@ -880,3 +880,10 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .rs-more .rs-stats { margin-top: 0; }
 .rs-more .rs-stats dt { font-size: clamp(1.6rem, 3.4vw, 2.6rem); }
 .rs-link { margin-top: 20px; }
+
+/* Placement order: work, then test and learn, numbers, who did what */
+.cs-after { margin-bottom: clamp(48px, 7vw, 96px); }
+.cs-after > .cs-process { margin-top: 0; }
+.cs-after > .cs-results { margin: clamp(40px, 6vw, 64px) 0 0; border-top: 0; padding-top: 0; }
+.cs-after > .cs-results .rs-stats { margin-top: 0; }
+.cs-case + .cs-pillars { margin-top: clamp(28px, 4vw, 44px); }

@@ -224,7 +224,7 @@
     const rs = story.results;
     const rsBars = rs && rs.chart ? (rs.chart.bars || []).filter((b) => b && b.value) : [];
     const rsMax = Math.max(...rsBars.map((b) => b.value), 1);
-    const statList = (list) => `<dl class="rs-stats">${list.map((st) => `
+    const statList = (list) => `<dl class="rs-stats" style="--n:${list.length}">${list.map((st) => `
             <div><dt>${text(st.value)}</dt><dd>${text(st.label)}${st.note ? `<span>${text(st.note)}</span>` : ''}</dd></div>`).join('')}
           </dl>`;
     const resultsHtml = rs ? `
@@ -262,7 +262,6 @@
         <div class="cs-trio" style="--n:${story.images.length};--ar:${story.images[0].width && story.images[0].height ? `${story.images[0].width} / ${story.images[0].height}` : '4 / 5'}">
           ${story.images.map((m) => `<figure>${mediaEl(m)}</figure>`).join('')}
         </div>` : ''}
-        ${splitHtml}
         ${(story.pillars || []).length ? `
         <div class="cs-pillars${story.pillars.some((pl) => pl.role) ? ' has-roles' : ''}">
           ${story.pillarsTitle ? `<p class="eyebrow">${esc(story.pillarsTitle)}</p>` : ''}
@@ -274,7 +273,6 @@
             </li>`).join('')}
           </ol>
         </div>` : ''}
-        ${processHtml}
       </section>` : '';
 
     // Looping image slider (story.carousel): fixed height, images at natural width, arrows + drag.
@@ -380,7 +378,7 @@
       <div class="cs-content wrap">
         ${storyHtml}
         ${formatsHtml}
-        ${resultsHtml}
+        ${processHtml || resultsHtml || splitHtml ? `<div class="cs-after">${processHtml}${resultsHtml}${splitHtml}</div>` : ''}
         ${proposalHtml}
         ${journalHtml}
         ${worksHtml}
