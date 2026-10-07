@@ -896,3 +896,8 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 /* The case: brief in body size, not a headline */
 .cs-case .cs-case-lead { font-size: var(--fs-md); font-weight: 500; line-height: 1.55; letter-spacing: -.01em; max-width: 62ch; }
 .cs-case .cs-case-lead + .cs-body-text { margin-top: 1rem; }
+
+/* Results per channel (Instagram, LinkedIn) */
+.cs-after > .cs-results + .cs-results { margin-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); padding-top: 24px; }
+.cs-after > .cs-results .eyebrow { margin-bottom: 18px; }
+.cs-results .rs-chart { margin-top: clamp(28px, 4vw, 44px); }

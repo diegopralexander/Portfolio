@@ -221,32 +221,30 @@
       </section>` : '';
 
     // Results (story.results): { title, lead, stats: [{ value, label, note }], chart: { title, note, bars: [{ label, value, display }] }, aside: [..], more: { title, stats: [..] } }
-    const rs = story.results;
-    const rsBars = rs && rs.chart ? (rs.chart.bars || []).filter((b) => b && b.value) : [];
-    const rsMax = Math.max(...rsBars.map((b) => b.value), 1);
     const statList = (list) => `<dl class="rs-stats" style="--n:${list.length}">${list.map((st) => `
             <div><dt>${text(st.value)}</dt><dd>${text(st.label)}${st.note ? `<span>${text(st.note)}</span>` : ''}</dd></div>`).join('')}
           </dl>`;
-    const resultsHtml = rs ? `
+    // Results: one block per channel (story.results = [{ title, lead, stats, chart, aside, link }])
+    const rsBlock = (rs) => {
+      const bars = rs.chart ? (rs.chart.bars || []).filter((b) => b && b.value) : [];
+      const max = Math.max(...bars.map((b) => b.value), 1);
+      return `
       <section class="cs-results reveal" aria-label="${esc(rs.title || 'Results')}">
         ${rs.title ? `<p class="eyebrow">${esc(rs.title)}</p>` : ''}
         ${rs.lead ? `<p class="cs-case-lead">${text(rs.lead)}</p>` : ''}
         ${(rs.stats || []).length ? statList(rs.stats) : ''}
-        ${rsBars.length ? `
+        ${bars.length ? `
         <figure class="rs-chart" style="--card-color:${esc(p.cardColor)}">
           ${rs.chart.title ? `<figcaption>${esc(rs.chart.title)}</figcaption>` : ''}
-          <ul>${rsBars.map((b) => `
-            <li><span class="rs-label">${esc(b.label)}</span><span class="rs-bar"><span style="width:${Math.max(4, (b.value / rsMax) * 100).toFixed(1)}%"></span></span><span class="rs-val">${esc(b.display || b.value)}</span></li>`).join('')}
+          <ul>${bars.map((b) => `
+            <li><span class="rs-label">${esc(b.label)}</span><span class="rs-bar"><span style="width:${Math.max(4, (b.value / max) * 100).toFixed(1)}%"></span></span><span class="rs-val">${esc(b.display || b.value)}</span></li>`).join('')}
           </ul>
-          ${(rs.aside || []).map((a) => `<p class="rs-note">${text(a)}</p>`).join('')}
-          ${rs.link && rs.link.url ? `<a class="cs-proposal-cta rs-link" href="${esc(rs.link.url)}" target="_blank" rel="noopener">${esc(rs.link.label || 'View profile')} <span aria-hidden="true">↗</span></a>` : ''}
         </figure>` : ''}
-        ${rs.more && (rs.more.stats || []).length ? `
-        <div class="rs-more">
-          ${rs.more.title ? `<p class="eyebrow">${esc(rs.more.title)}</p>` : ''}
-          ${statList(rs.more.stats)}
-        </div>` : ''}
-      </section>` : '';
+        ${(rs.aside || []).map((a) => `<p class="rs-note">${text(a)}</p>`).join('')}
+        ${rs.link && rs.link.url ? `<a class="cs-proposal-cta rs-link" href="${esc(rs.link.url)}" target="_blank" rel="noopener">${esc(rs.link.label || 'View profile')} <span aria-hidden="true">↗</span></a>` : ''}
+      </section>`;
+    };
+    const resultsHtml = story.results ? [].concat(story.results).filter(Boolean).map(rsBlock).join('') : '';
 
     const storyHtml = story.headline || (story.body || []).length ? `
       <section class="cs-story reveal">
