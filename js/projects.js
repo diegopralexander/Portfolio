@@ -225,6 +225,11 @@
         ${story.headline ? `<h2 class="cs-headline">${text(story.headline)}</h2>` : ''}
         ${story.subhead ? `<p class="cs-subhead">${text(story.subhead)}</p>` : ''}
         ${(story.body || []).map((para) => `<p class="cs-body-text">${text(para)}</p>`).join('')}
+        ${(story.case || []).length ? `
+        <div class="cs-case">
+          ${story.caseTitle ? `<p class="eyebrow">${esc(story.caseTitle)}</p>` : ''}
+          ${story.case.map((para, i) => `<p class="${i ? 'cs-body-text' : 'cs-case-lead'}">${text(para)}</p>`).join('')}
+        </div>` : ''}
         ${(story.images || []).length ? `
         <div class="cs-trio" style="--n:${story.images.length};--ar:${story.images[0].width && story.images[0].height ? `${story.images[0].width} / ${story.images[0].height}` : '4 / 5'}">
           ${story.images.map((m) => `<figure>${mediaEl(m)}</figure>`).join('')}
