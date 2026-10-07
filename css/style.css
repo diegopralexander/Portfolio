@@ -905,7 +905,6 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 
 /* ---------- Branded case study (project "brand" colour): red and white accents ---------- */
 .is-branded { --accent: var(--brand); --accent-text: var(--brand); --accent-ink: #FFFFFF; }
-.is-branded .cs-hero h1 { color: var(--brand); }
 .is-branded .cs-hero > .eyebrow { color: var(--brand); }
 /* story title in the serif, like an editorial masthead */
 .is-branded .cs-headline { font-family: var(--font-serif); font-weight: 400; color: var(--brand); font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height: 1.02; letter-spacing: -.01em; max-width: 18ch; }
@@ -919,5 +918,6 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .is-branded .fmt-tabs button[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #FFFFFF; }
 .is-branded .fmt-tabs button[aria-selected="true"]::before { background: #FFFFFF; }
 .is-branded .rs-bar span { background: var(--brand); }
+.is-branded .cs-results .rs-stats dt { color: var(--brand); }
 .is-branded .rs-link { background: var(--brand); color: #FFFFFF; }
 .is-branded .rs-link:hover { background: var(--ink); color: var(--bg); }
