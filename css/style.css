@@ -887,3 +887,12 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .cs-after > .cs-results { margin: clamp(40px, 6vw, 64px) 0 0; border-top: 0; padding-top: 0; }
 .cs-after > .cs-results .rs-stats { margin-top: 0; }
 .cs-case + .cs-pillars { margin-top: clamp(28px, 4vw, 44px); }
+
+/* Key numbers right under 'What I did' (heroStats) */
+.cs-hero-stats { margin-top: clamp(28px, 4vw, 44px); }
+.cs-hero-stats .eyebrow { margin: 0 0 14px; }
+.cs-hero-stats .rs-stats { margin-top: 0; border-top: 1px solid var(--line); padding-top: 20px; }
+.cs-hero-stats .rs-stats dt { font-size: clamp(1.6rem, 3.4vw, 2.6rem); }
+/* The case: brief in body size, not a headline */
+.cs-case .cs-case-lead { font-size: var(--fs-md); font-weight: 500; line-height: 1.55; letter-spacing: -.01em; max-width: 62ch; }
+.cs-case .cs-case-lead + .cs-body-text { margin-top: 1rem; }

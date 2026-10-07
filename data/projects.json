@@ -6,7 +6,7 @@
     "card": "cardColor = background of the card. cardInk = text color on it ('light' or 'dark'). cardStat = the big number or word shown on the card. cardStatLabel = small line under it. Optional: add \"cardImage\": \"assets/images/projects/<id>/cover.jpg\" to show an image on the card instead of the big number. With 'cardImage' set, the card shows the image (set cardInk to 'light' if the image is dark). Optional 'cardImagePosition' (e.g. \"50% 28%\") chooses which part of a tall photo shows on the card.",
     "tags": "'What I did' pill tags shown under the info row.",
     "cover": "Optional big picture under the tags: { \"src\", \"alt\", \"width\", \"height\" }. Image, GIF or video (.mp4/.webm). Without a cover, the numbers banner takes its place.",
-    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column. Optional 'split' { \"title\", \"columns\": [{ \"heading\", \"items\": [..] }] }: side-by-side 'who did what' columns, after the text. Pillars can also have \"key\", \"role\" (small label), \"color\" and \"chips\" [..]. Optional 'process' { \"title\", \"steps\": [{ \"title\", \"text\" }], \"result\": { \"value\", \"label\" } }: method steps after the pillars. Optional 'formats' { \"title\", \"text\", \"tabs\": [{ \"pillar\": \"<pillar key>\", \"items\": [..] }] }: 'The work' with one tab per pillar (name and colour come from the pillar). Each item is a carousel { \"title\", \"slides\": [{ \"src\", \"alt\" }] } (click opens every slide) or a reel { \"title\", \"cover\", \"video\" } (plays silently on loop while on screen). Tabs with no items are hidden. Optional 'caseTitle' + 'case' [..paragraphs]: 'The case' block after the body; the first paragraph is shown large (the brief), the rest as normal text. Optional 'results' { \"title\", \"lead\", \"stats\": [{ \"value\", \"label\", \"note\" }], \"chart\": { \"title\", \"bars\": [{ \"label\", \"value\" (number), \"display\" }] }, \"aside\": [..], \"more\": { \"title\", \"stats\": [..] } }: Results section after 'The work'. Only verified numbers.",
+    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column. Optional 'split' { \"title\", \"columns\": [{ \"heading\", \"items\": [..] }] }: side-by-side 'who did what' columns, after the text. Pillars can also have \"key\", \"role\" (small label), \"color\" and \"chips\" [..]. Optional 'process' { \"title\", \"steps\": [{ \"title\", \"text\" }], \"result\": { \"value\", \"label\" } }: method steps after the pillars. Optional 'formats' { \"title\", \"text\", \"tabs\": [{ \"pillar\": \"<pillar key>\", \"items\": [..] }] }: 'The work' with one tab per pillar (name and colour come from the pillar). Each item is a carousel { \"title\", \"slides\": [{ \"src\", \"alt\" }] } (click opens every slide) or a reel { \"title\", \"cover\", \"video\" } (plays silently on loop while on screen). Tabs with no items are hidden. Optional 'caseTitle' + 'case' [..paragraphs]: 'The case' block after the body; the first paragraph is shown large (the brief), the rest as normal text. Optional 'results' { \"title\", \"lead\", \"stats\": [{ \"value\", \"label\", \"note\" }], \"chart\": { \"title\", \"bars\": [{ \"label\", \"value\" (number), \"display\" }] }, \"aside\": [..], \"more\": { \"title\", \"stats\": [..] } }: Results section after 'The work'. Only verified numbers. Project-level: optional 'lead' replaces the subtitle under the title on the case study page only (the card keeps 'subtitle'); optional 'heroStats' { \"title\", \"stats\": [..] } shows key numbers under 'What I did'.",
     "stats": "Numbers banner. Only use verified numbers. Shown after the story (or in the cover spot if there's no cover). Empty [] removes the banner completely.",
     "gallery": "Images or videos after the story. Files go in assets/images/projects/<id>/. Each item: { \"src\", \"alt\", \"width\", \"height\" }. Layout is automatic: wide images (width/height >= 1.3) take a full row, square or portrait images pair up two per row, in the order listed. Keep portraits in even groups between banners so none is left alone.",
     "todo": "Any value that starts with 'TODO' is shown on the site with a dashed outline, so you can spot what still needs writing.",
@@ -38,7 +38,6 @@
       ],
       "story": {
         "headline": "At Placement, the audience is talent, not guests.",
-        "subhead": "I run Placement International’s content strategy end to end, across every digital touchpoint: social, email, ads and HubSpot.",
         "body": [],
         "split": {
           "title": "Who did what",
@@ -457,28 +456,6 @@
             "Followers: 91K in June → 97K in July → 103K today (+4,176 in June, +5,353 in July, +2,154 in the last 30 days).",
             "Source: Placement International Instagram insights, October 2026."
           ],
-          "more": {
-            "title": "Across channels",
-            "stats": [
-              {
-                "value": "+44%",
-                "label": "Combined audience growth"
-              },
-              {
-                "value": "700+",
-                "label": "Organic leads a month"
-              },
-              {
-                "value": "2–2.5%",
-                "label": "Sustained paid CTR"
-              },
-              {
-                "value": "0.17%",
-                "label": "Newsletter unsubscribe rate",
-                "note": "vs 0.5% industry average"
-              }
-            ]
-          },
           "link": {
             "url": "https://www.instagram.com/placement_international/",
             "label": "See @placement_international"
@@ -488,7 +465,30 @@
       "stats": [],
       "gallery": [],
       "comingSoon": true,
-      "cardImage": "assets/images/projects/placement-international/card-lanyards.jpg"
+      "cardImage": "assets/images/projects/placement-international/card-lanyards.jpg",
+      "lead": "I run Placement International’s content strategy end to end, across every digital touchpoint: social, email, ads and HubSpot.",
+      "heroStats": {
+        "title": "Across channels",
+        "stats": [
+          {
+            "value": "+44%",
+            "label": "Combined audience growth"
+          },
+          {
+            "value": "700+",
+            "label": "Organic leads a month"
+          },
+          {
+            "value": "2–2.5%",
+            "label": "Sustained paid CTR"
+          },
+          {
+            "value": "0.17%",
+            "label": "Newsletter unsubscribe rate",
+            "note": "vs 0.5% industry average"
+          }
+        ]
+      }
     },
     {
       "id": "casalia",

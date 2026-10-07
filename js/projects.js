@@ -362,7 +362,7 @@
         <a class="back" href="index.html#work">← Recent Works</a>
         <p class="eyebrow">${esc(p.category)}</p>
         <h1 class="display">${esc(p.title)}</h1>
-        <p class="lead">${text(p.subtitle)}</p>
+        <p class="lead">${text(p.lead || p.subtitle)}</p>
         ${[['Sector', p.sector], ['Role', p.role], ['When', p.dates], ['Where', p.location]].some(([, v]) => v) ? `
         <dl class="cs-facts">
           ${[['Sector', p.sector], ['Role', p.role], ['When', p.dates], ['Where', p.location]]
@@ -372,6 +372,11 @@
         <div class="cs-tags">
           <p class="eyebrow">What I did</p>
           <ul>${tags.map((tg) => `<li>${esc(tg)}</li>`).join('')}</ul>
+        </div>` : ''}
+        ${p.heroStats && (p.heroStats.stats || []).length ? `
+        <div class="cs-hero-stats">
+          ${p.heroStats.title ? `<p class="eyebrow">${esc(p.heroStats.title)}</p>` : ''}
+          ${statList(p.heroStats.stats)}
         </div>` : ''}
       </section>
       ${cover ? `<div class="wrap">${cover}</div>` : ''}
