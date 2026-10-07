@@ -938,9 +938,11 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .cs-section-title { font-family: var(--font-display); font-weight: 800; font-stretch: 70%; font-variation-settings: "wdth" 70; text-transform: uppercase; font-size: var(--fs-lg); line-height: 1; letter-spacing: -.01em; margin-bottom: clamp(20px, 3vw, 32px); }
 
 /* ---------- Home: two squares flicking through work + photography (js/flipbook.js) ---------- */
-.flipbook { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2vw, 24px); max-width: 960px; margin-inline: auto; padding-block: clamp(8px, 2vw, 24px) clamp(48px, 7vw, 96px); }
+/* two tall, story-like panels (2:3) that fit the screen height */
+.flipbook { --panel-w: min(44vw, calc((100svh - var(--header-h) - 96px) * 2 / 3)); display: grid; grid-template-columns: repeat(2, var(--panel-w)); justify-content: center; gap: clamp(12px, 2vw, 24px); max-width: none; padding-block: clamp(8px, 2vw, 24px) clamp(48px, 7vw, 96px); }
+@media (max-width: 640px) { .flipbook { grid-template-columns: 1fr 1fr; } }
 .flip { margin: 0; min-width: 0; }
-.flip-stage { position: relative; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; background: var(--bg-soft); }
+.flip-stage { position: relative; aspect-ratio: 2 / 3; border-radius: var(--radius); overflow: hidden; background: var(--bg-soft); }
 .flip-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
 .flip-stage img.is-on { opacity: 1; }
 .flip figcaption { margin-top: 12px; font-size: var(--fs-xs); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }

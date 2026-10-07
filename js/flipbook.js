@@ -9,7 +9,8 @@
   const n = (prefix, count) => Array.from({ length: count }, (_, i) => `${BASE}${prefix}-${String(i + 1).padStart(2, '0')}.jpg`);
   const SETS = {
     work: n('work', 14),   // Placement, Casalia, Bonafacha
-    photo: n('photo', 14), // Through the Lens
+    // Through the Lens: black & white with the colour shots spaced out
+    photo: ['01', '13', '03', '08', '16', '07', '10', '18', '02', '05', '14', '09', '11', '15', '04', '06', '17', '12'].map((k) => `${BASE}photo-${k}.jpg`),
   };
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
