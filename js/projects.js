@@ -399,6 +399,9 @@
         </a>
       </nav>`;
 
+    // Optional brand colour for this case study (p.brand): red/white accents, see .is-branded in style.css
+    mount.classList.toggle('is-branded', !!p.brand);
+    if (p.brand) mount.style.setProperty('--brand', p.brand); else mount.style.removeProperty('--brand');
     if (window.observeReveal) window.observeReveal(mount);
     mount.querySelectorAll('.cs-carousel').forEach(initCarousel);
     mount.querySelectorAll('.cs-proposal-frame').forEach(scalePreview);

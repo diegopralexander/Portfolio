@@ -902,3 +902,22 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .cs-after > .cs-results .eyebrow { margin-bottom: 18px; }
 .cs-results .rs-chart { margin-top: clamp(28px, 4vw, 44px); }
 .fmt-loc { display: block; margin-top: 2px; font-weight: 400; font-size: var(--fs-xs); color: var(--ink-soft); }
+
+/* ---------- Branded case study (project "brand" colour): red and white accents ---------- */
+.is-branded { --accent: var(--brand); --accent-text: var(--brand); --accent-ink: #FFFFFF; }
+.is-branded .cs-hero h1 { color: var(--brand); }
+.is-branded .cs-hero > .eyebrow { color: var(--brand); }
+/* story title in the serif, like an editorial masthead */
+.is-branded .cs-headline { font-family: var(--font-serif); font-weight: 400; color: var(--brand); font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height: 1.02; letter-spacing: -.01em; max-width: 18ch; }
+/* the case: a solid red panel with white text */
+.is-branded .cs-case { background: var(--brand); color: #FFFFFF; border: 0; border-radius: var(--radius); padding: clamp(28px, 5vw, 72px); }
+.is-branded .cs-case .eyebrow { color: rgba(255, 255, 255, .78); }
+.is-branded .cs-case .cs-case-lead { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.22; letter-spacing: 0; max-width: 34ch; color: #FFFFFF; }
+.is-branded .cs-case .cs-body-text { color: rgba(255, 255, 255, .88); max-width: 60ch; }
+.is-branded .cs-case + .cs-pillars { margin-top: clamp(48px, 7vw, 80px); }
+/* selected tab, buttons and chart in red */
+.is-branded .fmt-tabs button[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #FFFFFF; }
+.is-branded .fmt-tabs button[aria-selected="true"]::before { background: #FFFFFF; }
+.is-branded .rs-bar span { background: var(--brand); }
+.is-branded .rs-link { background: var(--brand); color: #FFFFFF; }
+.is-branded .rs-link:hover { background: var(--ink); color: var(--bg); }
