@@ -77,7 +77,9 @@
     const id = new URLSearchParams(location.search).get('id');
     const index = projects.findIndex((p) => p.id === id);
 
-    if (index !== -1 && projects[index].comingSoon) {
+    // Locked pages can still be previewed while building them: localhost + ?preview
+    const localPreview = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).has('preview');
+    if (index !== -1 && projects[index].comingSoon && !localPreview) {
       document.title = `${projects[index].title} · Coming soon · Diego Prado`;
       mount.innerHTML = `
         <section class="cs-hero wrap">
@@ -155,6 +157,54 @@
       ? `<figure class="cs-cover reveal">${mediaEl(p.cover, true)}</figure>`
       : band; // no picture yet: the numbers banner takes its place
 
+    // "Who did what" columns (story.split): { title, columns: [{ heading, items: [..] }] }
+    const sp = story.split;
+    const splitHtml = sp && (sp.columns || []).length ? `
+        <div class="cs-split">
+          ${sp.title ? `<p class="eyebrow">${esc(sp.title)}</p>` : ''}
+          <div class="cs-split-cols">${sp.columns.map((c) => `
+            <div><h3>${esc(c.heading)}</h3><ul>${(c.items || []).map((it) => `<li>${text(it)}</li>`).join('')}</ul></div>`).join('')}
+          </div>
+        </div>` : '';
+
+    // Method steps + one result (story.process): { title, steps: [{ title, text }], result: { value, label } }
+    const pc = story.process;
+    const processHtml = pc && (pc.steps || []).length ? `
+        <div class="cs-process">
+          ${pc.title ? `<p class="eyebrow">${esc(pc.title)}</p>` : ''}
+          <ol>${pc.steps.map((st, i) => `
+            <li><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(st.title)}</h3><p>${text(st.text)}</p></li>`).join('')}
+          </ol>
+          ${pc.result && pc.result.value ? `<p class="cs-process-result"><strong>${text(pc.result.value)}</strong> <span>${text(pc.result.label)}</span></p>` : ''}
+        </div>` : '';
+
+    // Posts / Stories / Reels in tabs (story.formats): { title, tabs: [{ label, ratio, items: [{ src, alt, pillar }] }] }
+    // An item's pillar comes from "pillar", or from the file name: 01-visa.jpg -> pillar key "visa".
+    const pillarByKey = Object.fromEntries((story.pillars || []).filter((pl) => pl.key).map((pl) => [pl.key, pl]));
+    const fm = story.formats;
+    const fmTabs = fm ? (fm.tabs || []).map((t) => ({ ...t, items: (t.items || []).filter((m) => m && m.src) })).filter((t) => t.items.length) : [];
+    const formatItem = (m) => {
+      const key = m.pillar || (m.src.match(/\/\d+-([a-z-]+)\.[a-z0-9]+$/i) || [])[1];
+      const pl = pillarByKey[key];
+      const isVideo = /\.(mp4|webm|mov)$/i.test(m.src);
+      const media = isVideo
+        ? `<video src="${esc(m.src)}" ${m.poster ? `poster="${esc(m.poster)}"` : ''} muted loop playsinline preload="metadata" aria-label="${esc(m.alt)}"></video><span class="fmt-play" aria-hidden="true"></span>`
+        : `<img src="${esc(m.src)}" alt="${esc(m.alt)}" loading="lazy" decoding="async">`;
+      return `<figure class="fmt-item${isVideo ? ' is-video' : ''}">${media}${pl ? `<figcaption class="fmt-tag" style="--pc:${esc(pl.color || 'var(--accent)')}">${esc(pl.title)}</figcaption>` : ''}</figure>`;
+    };
+    const formatsHtml = fmTabs.length ? `
+      <section class="cs-formats reveal" aria-label="${esc(fm.title || 'The work')}">
+        ${fm.title ? `<p class="eyebrow">${esc(fm.title)}</p>` : ''}
+        ${fm.text ? `<p class="cs-body-text">${text(fm.text)}</p>` : ''}
+        <div class="fmt-tabs" role="tablist">${fmTabs.map((t, i) => `
+          <button type="button" role="tab" id="fmt-tab-${i}" aria-controls="fmt-panel-${i}" aria-selected="${i === 0}"${i ? ' tabindex="-1"' : ''}>${esc(t.label)} <span>${t.items.length}</span></button>`).join('')}
+        </div>
+        ${fmTabs.map((t, i) => `
+        <div class="fmt-panel" role="tabpanel" id="fmt-panel-${i}" aria-labelledby="fmt-tab-${i}" style="--ar:${esc(t.ratio || '4 / 5')}"${i ? ' hidden' : ''}>
+          ${t.items.map(formatItem).join('')}
+        </div>`).join('')}
+      </section>` : '';
+
     const storyHtml = story.headline || (story.body || []).length ? `
       <section class="cs-story reveal">
         ${story.headline ? `<h2 class="cs-headline">${text(story.headline)}</h2>` : ''}
@@ -164,13 +214,19 @@
         <div class="cs-trio" style="--n:${story.images.length};--ar:${story.images[0].width && story.images[0].height ? `${story.images[0].width} / ${story.images[0].height}` : '4 / 5'}">
           ${story.images.map((m) => `<figure>${mediaEl(m)}</figure>`).join('')}
         </div>` : ''}
+        ${splitHtml}
         ${(story.pillars || []).length ? `
-        <div class="cs-pillars">
+        <div class="cs-pillars${story.pillars.some((pl) => pl.role) ? ' has-roles' : ''}">
           ${story.pillarsTitle ? `<p class="eyebrow">${esc(story.pillarsTitle)}</p>` : ''}
           <ol>${story.pillars.map((pl, i) => `
-            <li><span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(pl.title)}</h3><p>${text(pl.text)}</p></li>`).join('')}
+            <li${pl.color ? ` style="--pc:${esc(pl.color)}"` : ''}>
+              <span class="n">${String(i + 1).padStart(2, '0')}${pl.role ? `<span class="pl-role">${esc(pl.role)}</span>` : ''}</span>
+              <h3>${esc(pl.title)}</h3><p>${text(pl.text)}</p>
+              ${(pl.chips || []).length ? `<ul class="pl-chips">${pl.chips.map((c) => `<li>${esc(c)}</li>`).join('')}</ul>` : ''}
+            </li>`).join('')}
           </ol>
         </div>` : ''}
+        ${processHtml}
       </section>` : '';
 
     // Looping image slider (story.carousel): fixed height, images at natural width, arrows + drag.
@@ -275,6 +331,7 @@
       ${cover ? `<div class="wrap">${cover}</div>` : ''}
       <div class="cs-content wrap">
         ${storyHtml}
+        ${formatsHtml}
         ${proposalHtml}
         ${journalHtml}
         ${worksHtml}
@@ -296,6 +353,35 @@
     mount.querySelectorAll('.cs-carousel').forEach(initCarousel);
     mount.querySelectorAll('.cs-proposal-frame').forEach(scalePreview);
     if (window.initLightbox) window.initLightbox(mount, '.cs-journal img');
+    mount.querySelectorAll('.cs-formats').forEach(initFormats);
+  }
+
+  /* ---------- Posts / Stories / Reels tabs ---------- */
+  function initFormats(root) {
+    const tabs = [...root.querySelectorAll('[role="tab"]')];
+    const panels = [...root.querySelectorAll('[role="tabpanel"]')];
+    const select = (i) => {
+      tabs.forEach((t, j) => { t.setAttribute('aria-selected', i === j); t.tabIndex = i === j ? 0 : -1; });
+      panels.forEach((p, j) => { p.hidden = i !== j; });
+      root.querySelectorAll('video').forEach((v) => v.pause());
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i));
+      t.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { const n = (i + d + tabs.length) % tabs.length; select(n); tabs[n].focus(); }
+      });
+    });
+    // each panel's images browse as their own set in the photo viewer
+    panels.forEach((p) => { if (window.initLightbox) window.initLightbox(p, '.fmt-item img'); });
+    // reels: play on hover (mouse) or tap (touch), muted
+    root.querySelectorAll('.fmt-item.is-video').forEach((fig) => {
+      const v = fig.querySelector('video');
+      const set = (on) => { fig.classList.toggle('is-playing', on); if (on) v.play().catch(() => {}); else v.pause(); };
+      fig.addEventListener('mouseenter', () => set(true));
+      fig.addEventListener('mouseleave', () => set(false));
+      fig.addEventListener('click', () => set(v.paused));
+    });
   }
 
   /* ---------- Proposal preview: render the page at desktop width, scaled to fit ---------- */

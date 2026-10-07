@@ -6,7 +6,7 @@
     "card": "cardColor = background of the card. cardInk = text color on it ('light' or 'dark'). cardStat = the big number or word shown on the card. cardStatLabel = small line under it. Optional: add \"cardImage\": \"assets/images/projects/<id>/cover.jpg\" to show an image on the card instead of the big number. With 'cardImage' set, the card shows the image (set cardInk to 'light' if the image is dark). Optional 'cardImagePosition' (e.g. \"50% 28%\") chooses which part of a tall photo shows on the card.",
     "tags": "'What I did' pill tags shown under the info row.",
     "cover": "Optional big picture under the tags: { \"src\", \"alt\", \"width\", \"height\" }. Image, GIF or video (.mp4/.webm). Without a cover, the numbers banner takes its place.",
-    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column.",
+    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column. Optional 'split' { \"title\", \"columns\": [{ \"heading\", \"items\": [..] }] }: side-by-side 'who did what' columns, after the text. Pillars can also have \"key\", \"role\" (small label), \"color\" and \"chips\" [..]. Optional 'process' { \"title\", \"steps\": [{ \"title\", \"text\" }], \"result\": { \"value\", \"label\" } }: method steps after the pillars. Optional 'formats' { \"title\", \"text\", \"tabs\": [{ \"label\", \"ratio\", \"items\": [{ \"src\", \"alt\" }] }] }: Posts / Stories / Reels tabs; an item's pillar tag comes from its file name (01-visa.jpg -> pillar key 'visa') or a \"pillar\" field. Empty tabs are hidden.",
     "stats": "Numbers banner. Only use verified numbers. Shown after the story (or in the cover spot if there's no cover). Empty [] removes the banner completely.",
     "gallery": "Images or videos after the story. Files go in assets/images/projects/<id>/. Each item: { \"src\", \"alt\", \"width\", \"height\" }. Layout is automatic: wide images (width/height >= 1.3) take a full row, square or portrait images pair up two per row, in the order listed. Keep portraits in even groups between banners so none is left alone.",
     "todo": "Any value that starts with 'TODO' is shown on the site with a dashed outline, so you can spot what still needs writing.",
@@ -22,7 +22,7 @@
       "subtitle": "Content, campaigns and paid acquisition across 18 international markets.",
       "category": "Content & Paid Social",
       "sector": "Luxury hospitality talent",
-      "role": "Content, campaigns and paid acquisition",
+      "role": "Social media & content strategy",
       "dates": "2024 – present",
       "location": "Barcelona, Spain",
       "cardColor": "#2F4F86",
@@ -41,9 +41,115 @@
         "headline": "At Placement, the audience is talent, not guests.",
         "subhead": "I market careers inside luxury hotel groups across 18 international markets, on every channel where that talent spends time.",
         "body": [
+          "My job was to turn Placement’s social channels into a steady source of qualified candidates. I set the strategy and the content pillars, planned the monthly calendar and wrote the briefs, copy and scripts. The design team executed the creatives.",
           "I built and own the content calendar for Instagram and LinkedIn: 25 pieces of content a month per platform. I direct and personally film 6 content shoots a month with a 2-person team, script and produce every video ad, ghostwrite weekly LinkedIn thought leadership for the CEO (1,000+ new followers in a year) and co-produce livestreams with luxury hotel groups, including Four Seasons.",
           "I also run 4–6 multi-channel campaigns a month across Meta, LinkedIn, TikTok, YouTube and email, and own paid media end to end: audience research, angle testing and ad scripts. Paid and organic run off the same calendar, so the message holds across every touchpoint."
-        ]
+        ],
+        "split": {
+          "title": "Who did what",
+          "columns": [
+            {
+              "heading": "My role",
+              "items": [
+                "Social media strategy",
+                "Content pillars",
+                "Monthly content calendar",
+                "Creative briefs, copy and scripts",
+                "Testing, reporting and optimisation"
+              ]
+            },
+            {
+              "heading": "Design team",
+              "items": [
+                "Visual execution of the creatives"
+              ]
+            }
+          ]
+        },
+        "pillarsTitle": "Content pillars",
+        "pillars": [
+          {
+            "key": "tips",
+            "title": "Tips & Entertainment",
+            "role": "Reach",
+            "color": "#F2A541",
+            "text": "Light, shareable content that brings new people to the page.",
+            "chips": [
+              "Global Cuisine & Cultural Insights",
+              "Industry Trends & Innovations"
+            ]
+          },
+          {
+            "key": "partners",
+            "title": "Meet Our Partners",
+            "role": "Trust",
+            "color": "#4A78C2",
+            "text": "Spotlights on the hotel groups candidates can join."
+          },
+          {
+            "key": "work-live",
+            "title": "Work & Live",
+            "role": "Consideration",
+            "color": "#3FA27A",
+            "text": "What working and living abroad really looks like."
+          },
+          {
+            "key": "visa",
+            "title": "Visa Information",
+            "role": "Removes friction",
+            "color": "#8E6CCF",
+            "text": "Clear guidance on visas and paperwork, the biggest barrier for candidates."
+          },
+          {
+            "key": "recruiting",
+            "title": "We Are Recruiting",
+            "role": "Conversion",
+            "color": "#E8503A",
+            "text": "Open roles and direct calls to apply."
+          }
+        ],
+        "process": {
+          "title": "Test and learn, month by month",
+          "steps": [
+            {
+              "title": "Plan",
+              "text": "Each month’s calendar mixed 4–5 pillars, each with a clear job in the candidate journey."
+            },
+            {
+              "title": "Measure",
+              "text": "Engagement and candidate submissions tracked per pillar, month by month."
+            },
+            {
+              "title": "Double down",
+              "text": "The next month’s mix shifted toward the pillars that drove more engagement and more qualified applicants."
+            }
+          ],
+          "result": {
+            "value": "TODO",
+            "label": "TODO: qualified submissions result (Diego sends later)"
+          }
+        },
+        "formats": {
+          "title": "The work",
+          "text": "A selection of posts, stories and reels. Each piece is tagged with its pillar.",
+          "tabs": [
+            {
+              "label": "Posts",
+              "ratio": "4 / 5",
+              "items": []
+            },
+            {
+              "label": "Stories",
+              "ratio": "9 / 16",
+              "items": []
+            },
+            {
+              "label": "Reels",
+              "ratio": "9 / 16",
+              "items": []
+            }
+          ]
+        }
       },
       "stats": [
         {

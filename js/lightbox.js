@@ -67,13 +67,14 @@
   window.initLightbox = function (container, selector) {
     const imgs = [...(container || document).querySelectorAll(selector)];
     if (!imgs.length) return;
-    items = imgs;
+    // each call is its own set: arrows browse only the photos of that group
+    const openAt = (i) => { items = imgs; open(i); };
     imgs.forEach((img, i) => {
       img.setAttribute('tabindex', '0');
       img.setAttribute('role', 'button');
       img.setAttribute('aria-label', `Open photo ${i + 1} of ${imgs.length}`);
-      img.addEventListener('click', () => open(i));
-      img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
+      img.addEventListener('click', () => openAt(i));
+      img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(i); } });
     });
   };
 })();
