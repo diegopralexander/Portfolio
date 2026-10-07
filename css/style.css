@@ -933,3 +933,6 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .cs-after > .cs-results:first-child { margin-top: 0; }
 .cs-after > .cs-results + .cs-process { margin-top: clamp(48px, 7vw, 80px); }
 .cs-story > .cs-case:first-child { margin-top: 0; }
+
+/* Section heading above a gallery (story.masonryTitle) */
+.cs-section-title { font-family: var(--font-display); font-weight: 800; font-stretch: 70%; font-variation-settings: "wdth" 70; text-transform: uppercase; font-size: var(--fs-lg); line-height: 1; letter-spacing: -.01em; margin-bottom: clamp(20px, 3vw, 32px); }

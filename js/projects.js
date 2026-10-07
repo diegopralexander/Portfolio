@@ -339,6 +339,7 @@
     // Compact photo gallery in columns (story.masonry), photographer-portfolio style
     const masonry = (story.masonry || []).filter((m) => m && m.src);
     const masonryHtml = masonry.length ? `
+      ${story.masonryTitle ? `<h2 class="cs-section-title reveal">${esc(story.masonryTitle)}</h2>` : ''}
       <div class="cs-masonry reveal">
         ${masonry.map((m) => `<figure>${mediaEl(m)}</figure>`).join('')}
       </div>` : '';
