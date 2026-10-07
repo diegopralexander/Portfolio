@@ -940,9 +940,11 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 /* ---------- Home: two squares flicking through work + photography (js/flipbook.js) ---------- */
 /* two tall, story-like panels (2:3) that fit the screen height */
 .flipbook { --panel-w: min(44vw, calc((100svh - var(--header-h) - 96px) * 2 / 3)); display: grid; grid-template-columns: repeat(2, var(--panel-w)); justify-content: center; gap: clamp(12px, 2vw, 24px); max-width: none; padding-block: clamp(8px, 2vw, 24px) clamp(48px, 7vw, 96px); }
-@media (max-width: 640px) { .flipbook { grid-template-columns: 1fr 1fr; } }
+/* phones: the two panels stacked, full width, slightly taller than square */
+@media (max-width: 640px) { .flipbook { grid-template-columns: 1fr; gap: 20px; } }
 .flip { margin: 0; min-width: 0; }
 .flip-stage { position: relative; aspect-ratio: 2 / 3; border-radius: var(--radius); overflow: hidden; background: var(--bg-soft); }
 .flip-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
 .flip-stage img.is-on { opacity: 1; }
 .flip figcaption { margin-top: 12px; font-size: var(--fs-xs); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+@media (max-width: 640px) { .flip-stage { aspect-ratio: 4 / 5; } } /* after the base rule so it wins on phones */
