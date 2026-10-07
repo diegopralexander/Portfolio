@@ -16,6 +16,7 @@ js/main.js              Theme toggle, header, Barcelona clock, reveal-on-scroll
 js/projects.js          Builds cards and case studies from projects.json
 js/lightbox.js          Click-to-open photo viewer (photo journal)
 js/flower.js            Plays the footer logo while it is on screen
+js/flipbook.js          Home page squares that flick through work + photography (edit the image lists at the top)
 assets/                 Web-ready images, favicon, share image (og-cover.jpg)
 ```
 Source photos, the brief and design hand-offs live **outside** this folder, in `../portfolio-source/`, so they are never published.
