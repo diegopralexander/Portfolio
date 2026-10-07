@@ -127,40 +127,34 @@
               "pillar": "partners",
               "items": [
                 {
-                  "title": "Amangiri",
+                  "title": "Amangiri, Canyon Point",
                   "cover": "assets/images/projects/placement-international/partners/amangiri.jpg",
-                  "video": "assets/images/projects/placement-international/partners/amangiri.mp4",
-                  "location": "Canyon Point, Utah, USA"
+                  "video": "assets/images/projects/placement-international/partners/amangiri.mp4"
                 },
                 {
-                  "title": "Faena Hotel Miami Beach",
+                  "title": "Faena Hotel, Miami Beach",
                   "cover": "assets/images/projects/placement-international/partners/faena.jpg",
-                  "video": "assets/images/projects/placement-international/partners/faena.mp4",
-                  "location": "Miami Beach, Florida, USA"
+                  "video": "assets/images/projects/placement-international/partners/faena.mp4"
                 },
                 {
-                  "title": "Four Seasons Hotel Philadelphia at Comcast Center",
+                  "title": "Four Seasons Hotel, Philadelphia",
                   "cover": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.jpg",
-                  "video": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.mp4",
-                  "location": "Philadelphia, Pennsylvania, USA"
+                  "video": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.mp4"
                 },
                 {
-                  "title": "One&Only Moonlight Basin",
+                  "title": "One&Only Moonlight Basin, Montana",
                   "cover": "assets/images/projects/placement-international/partners/one-and-only.jpg",
-                  "video": "assets/images/projects/placement-international/partners/one-and-only.mp4",
-                  "location": "Big Sky, Montana, USA"
+                  "video": "assets/images/projects/placement-international/partners/one-and-only.mp4"
                 },
                 {
-                  "title": "Sexy Fish Miami",
+                  "title": "Sexy Fish, Miami",
                   "cover": "assets/images/projects/placement-international/partners/sexy-fish.jpg",
-                  "video": "assets/images/projects/placement-international/partners/sexy-fish.mp4",
-                  "location": "Miami, Florida, USA"
+                  "video": "assets/images/projects/placement-international/partners/sexy-fish.mp4"
                 },
                 {
-                  "title": "The St. Regis Bal Harbour Resort",
+                  "title": "St. Regis, Bal Harbour",
                   "cover": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.jpg",
-                  "video": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.mp4",
-                  "location": "Bal Harbour, Florida, USA"
+                  "video": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.mp4"
                 }
               ]
             },
