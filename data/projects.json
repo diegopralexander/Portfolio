@@ -6,7 +6,7 @@
     "card": "cardColor = background of the card. cardInk = text color on it ('light' or 'dark'). cardStat = the big number or word shown on the card. cardStatLabel = small line under it. Optional: add \"cardImage\": \"assets/images/projects/<id>/cover.jpg\" to show an image on the card instead of the big number. With 'cardImage' set, the card shows the image (set cardInk to 'light' if the image is dark). Optional 'cardImagePosition' (e.g. \"50% 28%\") chooses which part of a tall photo shows on the card.",
     "tags": "'What I did' pill tags shown under the info row.",
     "cover": "Optional big picture under the tags: { \"src\", \"alt\", \"width\", \"height\" }. Image, GIF or video (.mp4/.webm). Without a cover, the numbers banner takes its place.",
-    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column. Optional 'split' { \"title\", \"columns\": [{ \"heading\", \"items\": [..] }] }: side-by-side 'who did what' columns, after the text. Pillars can also have \"key\", \"role\" (small label), \"color\" and \"chips\" [..]. Optional 'process' { \"title\", \"steps\": [{ \"title\", \"text\" }], \"result\": { \"value\", \"label\" } }: method steps after the pillars. Optional 'formats' { \"title\", \"text\", \"tabs\": [{ \"label\", \"ratio\", \"items\": [{ \"src\", \"alt\" }] }] }: Posts / Stories / Reels tabs; an item's pillar tag comes from its file name (01-visa.jpg -> pillar key 'visa') or a \"pillar\" field. Empty tabs are hidden.",
+    "story": "The brief explanation: optional 'headline' (big), 'subhead', 'body' (short paragraphs), optional 'images' (shown side by side, same size, after the text), then optional 'pillarsTitle' + 'pillars' [{ \"title\", \"text\" }]. Optional 'carousel' [{ \"src\", \"alt\", \"width\", \"height\" }]: a looping slider with arrows, shown after the pillars, in the order listed. Optional 'strips': a list of image rows shown after the banner. Each row keeps every image at the same height and fits the page width. Optional 'banner' { \"src\", \"alt\", \"width\", \"height\" }: one full-width image right after the carousel. Optional 'masonry': a compact photo gallery in columns (like a photographer's grid), shown after the text and proposal. Optional 'worksTitle' + 'works' [{ \"title\", \"year\", \"category\", \"text\", \"credits\": [..], \"url\", \"cta\", \"image\" }]: a list of external projects (e.g. Readymag) that open in a new tab. Optional 'journalTitle' + 'journal' [{ \"src\", \"alt\", \"width\", \"height\", \"caption\" }]: a black, full-width photo journal, one centered column. Optional 'split' { \"title\", \"columns\": [{ \"heading\", \"items\": [..] }] }: side-by-side 'who did what' columns, after the text. Pillars can also have \"key\", \"role\" (small label), \"color\" and \"chips\" [..]. Optional 'process' { \"title\", \"steps\": [{ \"title\", \"text\" }], \"result\": { \"value\", \"label\" } }: method steps after the pillars. Optional 'formats' { \"title\", \"text\", \"tabs\": [{ \"pillar\": \"<pillar key>\", \"items\": [..] }] }: 'The work' with one tab per pillar (name and colour come from the pillar). Each item is a carousel { \"title\", \"slides\": [{ \"src\", \"alt\" }] } (click opens every slide) or a reel { \"title\", \"cover\", \"video\" } (plays silently on loop while on screen). Tabs with no items are hidden.",
     "stats": "Numbers banner. Only use verified numbers. Shown after the story (or in the cover spot if there's no cover). Empty [] removes the banner completely.",
     "gallery": "Images or videos after the story. Files go in assets/images/projects/<id>/. Each item: { \"src\", \"alt\", \"width\", \"height\" }. Layout is automatic: wide images (width/height >= 1.3) take a full row, square or portrait images pair up two per row, in the order listed. Keep portraits in even groups between banners so none is left alone.",
     "todo": "Any value that starts with 'TODO' is shown on the site with a dashed outline, so you can spot what still needs writing.",
@@ -131,21 +131,286 @@
         },
         "formats": {
           "title": "The work",
-          "text": "A selection of posts, stories and reels. Each piece is tagged with its pillar.",
+          "text": "A selection by pillar. Click a carousel to see every slide; the partner reels play on their own, without sound.",
           "tabs": [
             {
-              "label": "Posts",
-              "ratio": "4 / 5",
-              "items": []
+              "pillar": "partners",
+              "items": [
+                {
+                  "title": "Amangiri",
+                  "cover": "assets/images/projects/placement-international/partners/amangiri.jpg",
+                  "video": "assets/images/projects/placement-international/partners/amangiri.mp4"
+                },
+                {
+                  "title": "Faena",
+                  "cover": "assets/images/projects/placement-international/partners/faena.jpg",
+                  "video": "assets/images/projects/placement-international/partners/faena.mp4"
+                },
+                {
+                  "title": "Four Seasons Philadelphia",
+                  "cover": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.jpg",
+                  "video": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.mp4"
+                },
+                {
+                  "title": "One&Only",
+                  "cover": "assets/images/projects/placement-international/partners/one-and-only.jpg",
+                  "video": "assets/images/projects/placement-international/partners/one-and-only.mp4"
+                },
+                {
+                  "title": "Sexy Fish",
+                  "cover": "assets/images/projects/placement-international/partners/sexy-fish.jpg",
+                  "video": "assets/images/projects/placement-international/partners/sexy-fish.mp4"
+                },
+                {
+                  "title": "St. Regis Bal Harbour",
+                  "cover": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.jpg",
+                  "video": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.mp4"
+                }
+              ]
             },
             {
-              "label": "Stories",
-              "ratio": "9 / 16",
-              "items": []
+              "pillar": "tips",
+              "items": [
+                {
+                  "title": "Gastronomy",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/tips/gastronomy/01.jpg",
+                      "alt": "Gastronomy, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/gastronomy/02.jpg",
+                      "alt": "Gastronomy, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/gastronomy/03.jpg",
+                      "alt": "Gastronomy, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/gastronomy/04.jpg",
+                      "alt": "Gastronomy, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/gastronomy/05.jpg",
+                      "alt": "Gastronomy, slide 5"
+                    }
+                  ]
+                },
+                {
+                  "title": "Michelin Tips",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/tips/michelin-tips/01.jpg",
+                      "alt": "Michelin Tips, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/michelin-tips/02.jpg",
+                      "alt": "Michelin Tips, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/michelin-tips/03.jpg",
+                      "alt": "Michelin Tips, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/michelin-tips/04.jpg",
+                      "alt": "Michelin Tips, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/michelin-tips/05.jpg",
+                      "alt": "Michelin Tips, slide 5"
+                    }
+                  ]
+                },
+                {
+                  "title": "Wellness Hospitality",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/tips/wellness-hospitality/01.jpg",
+                      "alt": "Wellness Hospitality, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/wellness-hospitality/02.jpg",
+                      "alt": "Wellness Hospitality, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/wellness-hospitality/03.jpg",
+                      "alt": "Wellness Hospitality, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/wellness-hospitality/04.jpg",
+                      "alt": "Wellness Hospitality, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/wellness-hospitality/05.jpg",
+                      "alt": "Wellness Hospitality, slide 5"
+                    }
+                  ]
+                },
+                {
+                  "title": "Branded Residences",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/tips/branded-residences/01.jpg",
+                      "alt": "Branded Residences, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/branded-residences/02.jpg",
+                      "alt": "Branded Residences, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/branded-residences/03.jpg",
+                      "alt": "Branded Residences, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/branded-residences/04.jpg",
+                      "alt": "Branded Residences, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/tips/branded-residences/05.jpg",
+                      "alt": "Branded Residences, slide 5"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "label": "Reels",
-              "ratio": "9 / 16",
+              "pillar": "work-live",
+              "items": [
+                {
+                  "title": "Work & Live in San Francisco",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/san-francisco/01.jpg",
+                      "alt": "Work & Live in San Francisco, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/san-francisco/02.jpg",
+                      "alt": "Work & Live in San Francisco, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/san-francisco/03.jpg",
+                      "alt": "Work & Live in San Francisco, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/san-francisco/04.jpg",
+                      "alt": "Work & Live in San Francisco, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/san-francisco/05.jpg",
+                      "alt": "Work & Live in San Francisco, slide 5"
+                    }
+                  ]
+                },
+                {
+                  "title": "Work & Live in Hawaii",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/hawaii/01.jpg",
+                      "alt": "Work & Live in Hawaii, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/hawaii/02.jpg",
+                      "alt": "Work & Live in Hawaii, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/hawaii/03.jpg",
+                      "alt": "Work & Live in Hawaii, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/hawaii/04.jpg",
+                      "alt": "Work & Live in Hawaii, slide 4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "pillar": "recruiting",
+              "items": [
+                {
+                  "title": "Amangiri",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/amangiri/01.jpg",
+                      "alt": "Amangiri, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/amangiri/02.jpg",
+                      "alt": "Amangiri, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/amangiri/03.jpg",
+                      "alt": "Amangiri, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/amangiri/04.jpg",
+                      "alt": "Amangiri, slide 4"
+                    }
+                  ]
+                },
+                {
+                  "title": "Little Palm Island",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/little-palm-island/01.jpg",
+                      "alt": "Little Palm Island, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/little-palm-island/02.jpg",
+                      "alt": "Little Palm Island, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/little-palm-island/03.jpg",
+                      "alt": "Little Palm Island, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/little-palm-island/04.jpg",
+                      "alt": "Little Palm Island, slide 4"
+                    }
+                  ]
+                },
+                {
+                  "title": "Rosewood Miramar",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/rosewood-miramar/01.jpg",
+                      "alt": "Rosewood Miramar, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/rosewood-miramar/02.jpg",
+                      "alt": "Rosewood Miramar, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/rosewood-miramar/03.jpg",
+                      "alt": "Rosewood Miramar, slide 3"
+                    }
+                  ]
+                },
+                {
+                  "title": "The Ritz-Carlton, Grande Lakes",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/ritz-carlton-grande-lakes/01.jpg",
+                      "alt": "The Ritz-Carlton, Grande Lakes, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/ritz-carlton-grande-lakes/02.jpg",
+                      "alt": "The Ritz-Carlton, Grande Lakes, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/ritz-carlton-grande-lakes/03.jpg",
+                      "alt": "The Ritz-Carlton, Grande Lakes, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/recruiting/ritz-carlton-grande-lakes/04.jpg",
+                      "alt": "The Ritz-Carlton, Grande Lakes, slide 4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "pillar": "visa",
               "items": []
             }
           ]

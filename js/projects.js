@@ -178,29 +178,44 @@
           ${pc.result && pc.result.value ? `<p class="cs-process-result"><strong>${text(pc.result.value)}</strong> <span>${text(pc.result.label)}</span></p>` : ''}
         </div>` : '';
 
-    // Posts / Stories / Reels in tabs (story.formats): { title, tabs: [{ label, ratio, items: [{ src, alt, pillar }] }] }
-    // An item's pillar comes from "pillar", or from the file name: 01-visa.jpg -> pillar key "visa".
+    // The work, one tab per pillar (story.formats): { title, text, tabs: [{ pillar, items: [..] }] }
+    // An item is a carousel { title, slides: [{ src, alt }] } or a reel { title, cover, video }.
     const pillarByKey = Object.fromEntries((story.pillars || []).filter((pl) => pl.key).map((pl) => [pl.key, pl]));
     const fm = story.formats;
-    const fmTabs = fm ? (fm.tabs || []).map((t) => ({ ...t, items: (t.items || []).filter((m) => m && m.src) })).filter((t) => t.items.length) : [];
+    const fmTabs = fm ? (fm.tabs || []).map((t) => ({ ...t, items: (t.items || []).filter((m) => m && (m.video || (m.slides || []).length)) })).filter((t) => t.items.length) : [];
+    const carousels = [];
     const formatItem = (m) => {
-      const key = m.pillar || (m.src.match(/\/\d+-([a-z-]+)\.[a-z0-9]+$/i) || [])[1];
-      const pl = pillarByKey[key];
-      const isVideo = /\.(mp4|webm|mov)$/i.test(m.src);
-      const media = isVideo
-        ? `<video src="${esc(m.src)}" ${m.poster ? `poster="${esc(m.poster)}"` : ''} muted loop playsinline preload="metadata" aria-label="${esc(m.alt)}"></video><span class="fmt-play" aria-hidden="true"></span>`
-        : `<img src="${esc(m.src)}" alt="${esc(m.alt)}" loading="lazy" decoding="async">`;
-      return `<figure class="fmt-item${isVideo ? ' is-video' : ''}">${media}${pl ? `<figcaption class="fmt-tag" style="--pc:${esc(pl.color || 'var(--accent)')}">${esc(pl.title)}</figcaption>` : ''}</figure>`;
+      if (m.video) return `
+          <figure class="fmt-item is-reel">
+            <div class="fmt-media">
+              ${m.cover ? `<img src="${esc(m.cover)}" alt="${esc(m.title)}: Meet our partner cover" loading="lazy" decoding="async">` : ''}
+              <video src="${esc(m.video)}" muted playsinline preload="none" aria-hidden="true"></video>
+            </div>
+            <figcaption>${esc(m.title)}</figcaption>
+          </figure>`;
+      carousels.push(m.slides.map((sl) => ({ src: sl.src, alt: sl.alt || m.title })));
+      const n = m.slides.length;
+      return `
+          <figure class="fmt-item is-carousel">
+            <button class="fmt-media" type="button" data-carousel="${carousels.length - 1}" aria-label="Open ${esc(m.title)}, ${n} slides">
+              <img src="${esc(m.slides[0].src)}" alt="${esc(m.slides[0].alt || m.title)}" loading="lazy" decoding="async">
+              ${n > 1 ? `<span class="fmt-count" aria-hidden="true">${n}</span>` : ''}
+            </button>
+            <figcaption>${esc(m.title)}</figcaption>
+          </figure>`;
     };
     const formatsHtml = fmTabs.length ? `
       <section class="cs-formats reveal" aria-label="${esc(fm.title || 'The work')}">
         ${fm.title ? `<p class="eyebrow">${esc(fm.title)}</p>` : ''}
         ${fm.text ? `<p class="cs-body-text">${text(fm.text)}</p>` : ''}
-        <div class="fmt-tabs" role="tablist">${fmTabs.map((t, i) => `
-          <button type="button" role="tab" id="fmt-tab-${i}" aria-controls="fmt-panel-${i}" aria-selected="${i === 0}"${i ? ' tabindex="-1"' : ''}>${esc(t.label)} <span>${t.items.length}</span></button>`).join('')}
+        <div class="fmt-tabs" role="tablist">${fmTabs.map((t, i) => {
+          const pl = pillarByKey[t.pillar] || {};
+          return `
+          <button type="button" role="tab" id="fmt-tab-${i}" aria-controls="fmt-panel-${i}" aria-selected="${i === 0}"${i ? ' tabindex="-1"' : ''} style="--pc:${esc(pl.color || 'var(--accent)')}">${esc(t.label || pl.title || t.pillar)} <span>${t.items.length}</span></button>`;
+        }).join('')}
         </div>
         ${fmTabs.map((t, i) => `
-        <div class="fmt-panel" role="tabpanel" id="fmt-panel-${i}" aria-labelledby="fmt-tab-${i}" style="--ar:${esc(t.ratio || '4 / 5')}"${i ? ' hidden' : ''}>
+        <div class="fmt-panel${t.items.some((m) => m.video) ? ' is-reels' : ''}" role="tabpanel" id="fmt-panel-${i}" aria-labelledby="fmt-tab-${i}"${i ? ' hidden' : ''}>
           ${t.items.map(formatItem).join('')}
         </div>`).join('')}
       </section>` : '';
@@ -353,35 +368,63 @@
     mount.querySelectorAll('.cs-carousel').forEach(initCarousel);
     mount.querySelectorAll('.cs-proposal-frame').forEach(scalePreview);
     if (window.initLightbox) window.initLightbox(mount, '.cs-journal img');
-    mount.querySelectorAll('.cs-formats').forEach(initFormats);
+    mount.querySelectorAll('.cs-formats').forEach((root) => initFormats(root, carousels));
   }
 
-  /* ---------- Posts / Stories / Reels tabs ---------- */
-  function initFormats(root) {
+  /* ---------- The work: pillar tabs, carousels, silent looping reels ---------- */
+  function initFormats(root, carousels) {
     const tabs = [...root.querySelectorAll('[role="tab"]')];
     const panels = [...root.querySelectorAll('[role="tabpanel"]')];
+    const videos = [...root.querySelectorAll('video')];
+    const onScreen = new Set();
+    // Reels loop like a GIF while on screen in the open tab: cover first, then the clip fades in,
+    // and at the end of each clip the cover shows again for a moment.
+    const COVER_MS = 1600;
+    const run = (v, on) => {
+      const fig = v.closest('.fmt-media');
+      clearTimeout(v._t);
+      if (!on) { v.pause(); fig.classList.remove('is-playing'); return; }
+      if (!v.paused || v._waiting) return;
+      v._waiting = true;
+      v.preload = 'auto';
+      v._t = setTimeout(() => {
+        v._waiting = false;
+        v.play().then(() => fig.classList.add('is-playing')).catch(() => {});
+      }, COVER_MS);
+    };
+    videos.forEach((v) => v.addEventListener('ended', () => {
+      v.closest('.fmt-media').classList.remove('is-playing');
+      setTimeout(() => { v.currentTime = 0; sync(); }, 600);
+    }));
+    const sync = () => videos.forEach((v) => {
+      const show = onScreen.has(v) && !v.closest('[role="tabpanel"]').hidden;
+      if (!show) { v._waiting = false; run(v, false); } else run(v, true);
+    });
     const select = (i) => {
       tabs.forEach((t, j) => { t.setAttribute('aria-selected', i === j); t.tabIndex = i === j ? 0 : -1; });
       panels.forEach((p, j) => { p.hidden = i !== j; });
-      root.querySelectorAll('video').forEach((v) => v.pause());
+      sync();
     };
     tabs.forEach((t, i) => {
-      t.addEventListener('click', () => select(i));
+      t.addEventListener('click', () => { select(i); t.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' }); });
       t.addEventListener('keydown', (e) => {
         const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
         if (d) { const n = (i + d + tabs.length) % tabs.length; select(n); tabs[n].focus(); }
       });
     });
-    // each panel's images browse as their own set in the photo viewer
-    panels.forEach((p) => { if (window.initLightbox) window.initLightbox(p, '.fmt-item img'); });
-    // reels: play on hover (mouse) or tap (touch), muted
-    root.querySelectorAll('.fmt-item.is-video').forEach((fig) => {
-      const v = fig.querySelector('video');
-      const set = (on) => { fig.classList.toggle('is-playing', on); if (on) v.play().catch(() => {}); else v.pause(); };
-      fig.addEventListener('mouseenter', () => set(true));
-      fig.addEventListener('mouseleave', () => set(false));
-      fig.addEventListener('click', () => set(v.paused));
+    // a carousel opens in the photo viewer with all its slides
+    root.querySelectorAll('[data-carousel]').forEach((btn) => {
+      btn.addEventListener('click', () => window.openLightbox && window.openLightbox(carousels[btn.dataset.carousel], 0));
     });
+    if (!videos.length) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return; // covers stay as still images
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target)));
+      sync();
+    }, { threshold: 0.35 });
+    videos.forEach((v) => io.observe(v));
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); }); // browsers pause muted video in background tabs
   }
 
   /* ---------- Proposal preview: render the page at desktop width, scaled to fit ---------- */

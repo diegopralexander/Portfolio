@@ -48,7 +48,7 @@
     imgEl.src = src.currentSrc || src.src;
     imgEl.alt = src.alt || '';
     countEl.textContent = `${index + 1} / ${items.length}`;
-    const cap = src.closest('figure')?.querySelector('figcaption')?.textContent || '';
+    const cap = src.caption || (src.closest && src.closest('figure')?.querySelector('figcaption')?.textContent) || '';
     capEl.textContent = cap;
     // preload the next one
     const next = items[(index + 1) % items.length];
@@ -63,6 +63,13 @@
   }
 
   function close() { if (dialog && dialog.open) dialog.close(); }
+
+  // open a list of plain { src, alt } items, e.g. the slides of one carousel
+  window.openLightbox = function (list, i = 0) {
+    if (!list || !list.length) return;
+    items = list;
+    open(i);
+  };
 
   window.initLightbox = function (container, selector) {
     const imgs = [...(container || document).querySelectorAll(selector)];
