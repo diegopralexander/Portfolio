@@ -879,3 +879,4 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .rs-more { margin-top: clamp(40px, 6vw, 64px); }
 .rs-more .rs-stats { margin-top: 0; }
 .rs-more .rs-stats dt { font-size: clamp(1.6rem, 3.4vw, 2.6rem); }
+.rs-link { margin-top: 20px; }

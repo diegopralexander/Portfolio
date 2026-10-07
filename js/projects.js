@@ -239,6 +239,7 @@
             <li><span class="rs-label">${esc(b.label)}</span><span class="rs-bar"><span style="width:${Math.max(4, (b.value / rsMax) * 100).toFixed(1)}%"></span></span><span class="rs-val">${esc(b.display || b.value)}</span></li>`).join('')}
           </ul>
           ${(rs.aside || []).map((a) => `<p class="rs-note">${text(a)}</p>`).join('')}
+          ${rs.link && rs.link.url ? `<a class="cs-proposal-cta rs-link" href="${esc(rs.link.url)}" target="_blank" rel="noopener">${esc(rs.link.label || 'View profile')} <span aria-hidden="true">↗</span></a>` : ''}
         </figure>` : ''}
         ${rs.more && (rs.more.stats || []).length ? `
         <div class="rs-more">
