@@ -901,3 +901,4 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .cs-after > .cs-results + .cs-results { margin-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); padding-top: 24px; }
 .cs-after > .cs-results .eyebrow { margin-bottom: 18px; }
 .cs-results .rs-chart { margin-top: clamp(28px, 4vw, 44px); }
+.fmt-loc { display: block; margin-top: 2px; font-weight: 400; font-size: var(--fs-xs); color: var(--ink-soft); }

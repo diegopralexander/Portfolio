@@ -191,7 +191,7 @@
               ${m.cover ? `<img src="${esc(m.cover)}" alt="${esc(m.title)}: Meet our partner cover" loading="lazy" decoding="async">` : ''}
               <video src="${esc(m.video)}" muted playsinline preload="none" aria-hidden="true"></video>
             </div>
-            <figcaption>${esc(m.title)}</figcaption>
+            <figcaption>${esc(m.title)}${m.location ? `<span class="fmt-loc">${esc(m.location)}</span>` : ''}</figcaption>
           </figure>`;
       carousels.push(m.slides.map((sl) => ({ src: sl.src, alt: sl.alt || m.title })));
       const n = m.slides.length;

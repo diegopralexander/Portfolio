@@ -129,32 +129,38 @@
                 {
                   "title": "Amangiri",
                   "cover": "assets/images/projects/placement-international/partners/amangiri.jpg",
-                  "video": "assets/images/projects/placement-international/partners/amangiri.mp4"
+                  "video": "assets/images/projects/placement-international/partners/amangiri.mp4",
+                  "location": "Canyon Point, Utah, USA"
                 },
                 {
-                  "title": "Faena",
+                  "title": "Faena Hotel Miami Beach",
                   "cover": "assets/images/projects/placement-international/partners/faena.jpg",
-                  "video": "assets/images/projects/placement-international/partners/faena.mp4"
+                  "video": "assets/images/projects/placement-international/partners/faena.mp4",
+                  "location": "Miami Beach, Florida, USA"
                 },
                 {
-                  "title": "Four Seasons Philadelphia",
+                  "title": "Four Seasons Hotel Philadelphia at Comcast Center",
                   "cover": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.jpg",
-                  "video": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.mp4"
+                  "video": "assets/images/projects/placement-international/partners/four-seasons-philadelphia.mp4",
+                  "location": "Philadelphia, Pennsylvania, USA"
                 },
                 {
-                  "title": "One&Only",
+                  "title": "One&Only Moonlight Basin",
                   "cover": "assets/images/projects/placement-international/partners/one-and-only.jpg",
-                  "video": "assets/images/projects/placement-international/partners/one-and-only.mp4"
+                  "video": "assets/images/projects/placement-international/partners/one-and-only.mp4",
+                  "location": "Big Sky, Montana, USA"
                 },
                 {
-                  "title": "Sexy Fish",
+                  "title": "Sexy Fish Miami",
                   "cover": "assets/images/projects/placement-international/partners/sexy-fish.jpg",
-                  "video": "assets/images/projects/placement-international/partners/sexy-fish.mp4"
+                  "video": "assets/images/projects/placement-international/partners/sexy-fish.mp4",
+                  "location": "Miami, Florida, USA"
                 },
                 {
-                  "title": "St. Regis Bal Harbour",
+                  "title": "The St. Regis Bal Harbour Resort",
                   "cover": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.jpg",
-                  "video": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.mp4"
+                  "video": "assets/images/projects/placement-international/partners/st-regis-bal-harbour.mp4",
+                  "location": "Bal Harbour, Florida, USA"
                 }
               ]
             },
@@ -267,6 +273,31 @@
               "pillar": "work-live",
               "items": [
                 {
+                  "title": "Work & Live in Chicago",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/chicago/01.jpg",
+                      "alt": "Work & Live in Chicago, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/chicago/02.jpg",
+                      "alt": "Work & Live in Chicago, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/chicago/03.jpg",
+                      "alt": "Work & Live in Chicago, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/chicago/04.jpg",
+                      "alt": "Work & Live in Chicago, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/chicago/05.jpg",
+                      "alt": "Work & Live in Chicago, slide 5"
+                    }
+                  ]
+                },
+                {
                   "title": "Work & Live in San Francisco",
                   "slides": [
                     {
@@ -309,6 +340,31 @@
                     {
                       "src": "assets/images/projects/placement-international/work-live/hawaii/04.jpg",
                       "alt": "Work & Live in Hawaii, slide 4"
+                    }
+                  ]
+                },
+                {
+                  "title": "Best Places to Work in Hospitality, Summer 2026",
+                  "slides": [
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/best-places-summer-2026/01.jpg",
+                      "alt": "Best Places to Work in Hospitality, Summer 2026, slide 1"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/best-places-summer-2026/02.jpg",
+                      "alt": "Best Places to Work in Hospitality, Summer 2026, slide 2"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/best-places-summer-2026/03.jpg",
+                      "alt": "Best Places to Work in Hospitality, Summer 2026, slide 3"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/best-places-summer-2026/04.jpg",
+                      "alt": "Best Places to Work in Hospitality, Summer 2026, slide 4"
+                    },
+                    {
+                      "src": "assets/images/projects/placement-international/work-live/best-places-summer-2026/05.jpg",
+                      "alt": "Best Places to Work in Hospitality, Summer 2026, slide 5"
                     }
                   ]
                 }
