@@ -187,10 +187,11 @@
     const formatItem = (m) => {
       if (m.video) return `
           <figure class="fmt-item is-reel">
-            <div class="fmt-media">
-              ${m.cover ? `<img src="${esc(m.cover)}" alt="${esc(m.title)}: Meet our partner cover" loading="lazy" decoding="async">` : ''}
-              <video src="${esc(m.video)}" muted playsinline preload="none" aria-hidden="true"></video>
-            </div>
+            <button class="fmt-media" type="button" aria-label="Play or pause the ${esc(m.title)} reel">
+              ${m.cover ? `<img src="${esc(m.cover)}" alt="" loading="lazy" decoding="async">` : ''}
+              <video src="${esc(m.video)}" muted playsinline webkit-playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+              <span class="fmt-play" aria-hidden="true"></span>
+            </button>
             <figcaption>${esc(m.title)}${m.location ? `<span class="fmt-loc">${esc(m.location)}</span>` : ''}</figcaption>
           </figure>`;
       carousels.push(m.slides.map((sl) => ({ src: sl.src, alt: sl.alt || m.title })));
@@ -409,39 +410,73 @@
     mount.querySelectorAll('.cs-formats').forEach((root) => initFormats(root, carousels));
   }
 
-  /* ---------- The work: pillar tabs, carousels, silent looping reels ---------- */
+  /* ---------- The work: pillar tabs, carousels, silent reels ---------- */
+  // Desktop (mouse): reels autoplay like a GIF while on screen: cover first, then the clip fades in.
+  // Phones / touch: tap to play, tap to pause, one reel at a time (phones often block autoplay:
+  // Low Power Mode, Reduce Motion, data saver). Either way a click or tap always works.
   function initFormats(root, carousels) {
     const tabs = [...root.querySelectorAll('[role="tab"]')];
     const panels = [...root.querySelectorAll('[role="tabpanel"]')];
     const videos = [...root.querySelectorAll('video')];
+    const touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const autoMode = !touch && !reduce && 'IntersectionObserver' in window;
     const onScreen = new Set();
-    // Reels loop like a GIF while on screen in the open tab: cover first, then the clip fades in,
-    // and at the end of each clip the cover shows again for a moment.
     const COVER_MS = 1600;
-    const run = (v, on) => {
-      const fig = v.closest('.fmt-media');
-      clearTimeout(v._t);
-      if (!on) { v.pause(); fig.classList.remove('is-playing'); return; }
-      if (!v.paused || v._waiting) return;
-      v._waiting = true;
-      v.preload = 'auto';
-      v._t = setTimeout(() => {
-        v._waiting = false;
-        v.play().then(() => fig.classList.add('is-playing')).catch(() => {});
-      }, COVER_MS);
+    const box = (v) => v.closest('.fmt-media');
+    const visible = (v) => onScreen.has(v) && !v.closest('[role="tabpanel"]').hidden;
+
+    const stop = (v, showButton) => {
+      clearTimeout(v._t); v._waiting = false;
+      v.pause();
+      box(v).classList.remove('is-playing');
+      box(v).classList.toggle('needs-tap', !!showButton);
     };
-    videos.forEach((v) => v.addEventListener('ended', () => {
-      v.closest('.fmt-media').classList.remove('is-playing');
-      setTimeout(() => { v.currentTime = 0; sync(); }, 600);
-    }));
+    const start = (v) => {
+      v.preload = 'auto';
+      if (v.readyState === 0 && v.networkState !== 2) v.load(); // wake up a video that was set not to preload
+      return v.play().then(() => { box(v).classList.add('is-playing'); box(v).classList.remove('needs-tap'); })
+        .catch(() => { box(v).classList.remove('is-playing'); box(v).classList.add('needs-tap'); });
+    };
+
+    // autoplay (desktop): play after the cover has shown for a moment
+    const autoRun = (v) => {
+      if (v._userPaused || !v.paused || v._waiting) return;
+      v._waiting = true;
+      v.preload = 'auto'; // load during the cover so the clip starts without a gap
+      v._t = setTimeout(() => { v._waiting = false; if (visible(v)) start(v); }, COVER_MS);
+    };
     const sync = () => videos.forEach((v) => {
-      const show = onScreen.has(v) && !v.closest('[role="tabpanel"]').hidden;
-      if (!show) { v._waiting = false; run(v, false); } else run(v, true);
+      if (!visible(v)) { if (!v.paused || v._waiting) stop(v, !autoMode); return; }
+      if (autoMode) autoRun(v);
     });
+
+    videos.forEach((v) => {
+      // iOS only plays inline video when muted / inline are set as properties, not just attributes
+      v.muted = true; v.defaultMuted = true; v.playsInline = true;
+      if (!autoMode) { v.loop = true; v.preload = 'metadata'; box(v).classList.add('needs-tap'); } // tap mode: ready to start on tap
+      v.addEventListener('ended', () => { // autoplay: show the cover again, then replay
+        box(v).classList.remove('is-playing');
+        setTimeout(() => { v.currentTime = 0; sync(); }, 600);
+      });
+      box(v).addEventListener('click', () => {
+        if (v.paused) {
+          v._userPaused = false;
+          if (!autoMode) videos.forEach((o) => { if (o !== v && !o.paused) stop(o, true); }); // one at a time
+          clearTimeout(v._t); v._waiting = false;
+          start(v);
+        } else {
+          v._userPaused = true;
+          stop(v, true);
+        }
+      });
+    });
+
     const select = (i) => {
       tabs.forEach((t, j) => { t.setAttribute('aria-selected', i === j); t.tabIndex = i === j ? 0 : -1; });
       panels.forEach((p, j) => { p.hidden = i !== j; });
-      sync();
+      videos.forEach((v) => { if (v.closest('[role="tabpanel"]').hidden && (!v.paused || v._waiting)) stop(v, !autoMode); });
+      if (autoMode) sync();
     };
     tabs.forEach((t, i) => {
       t.addEventListener('click', () => { select(i); t.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' }); });
@@ -454,15 +489,20 @@
     root.querySelectorAll('[data-carousel]').forEach((btn) => {
       btn.addEventListener('click', () => window.openLightbox && window.openLightbox(carousels[btn.dataset.carousel], 0));
     });
+
     if (!videos.length) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !('IntersectionObserver' in window)) return; // covers stay as still images
+    if (!('IntersectionObserver' in window)) { videos.forEach((v) => box(v).classList.add('needs-tap')); return; }
+    // on screen: autoplay (desktop); off screen: pause (everywhere)
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => (e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target)));
-      sync();
-    }, { threshold: 0.35 });
+      entries.forEach((e) => {
+        if (e.isIntersecting) { onScreen.add(e.target); return; }
+        onScreen.delete(e.target);
+        if (!autoMode && !e.target.paused) stop(e.target, true); // tapped reel scrolled away: pause it
+      });
+      if (autoMode) sync();
+    }, { threshold: autoMode ? 0.35 : 0 });
     videos.forEach((v) => io.observe(v));
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); }); // browsers pause muted video in background tabs
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); }); // browsers pause video in background tabs
   }
 
   /* ---------- Proposal preview: render the page at desktop width, scaled to fit ---------- */

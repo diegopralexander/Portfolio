@@ -921,3 +921,10 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .is-branded .cs-results .rs-stats dt { color: var(--brand); }
 .is-branded .rs-link { background: var(--brand); color: #FFFFFF; }
 .is-branded .rs-link:hover { background: var(--ink); color: var(--bg); }
+
+/* Reels: tap / click to play or pause; play button when the reel isn't playing on its own */
+.is-reel button.fmt-media { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.fmt-play { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: rgba(10, 10, 10, .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .7); opacity: 0; transform: scale(.9); transition: opacity .25s ease, transform .25s var(--ease); pointer-events: none; }
+.fmt-play::after { content: ""; position: absolute; left: 21px; top: 16px; border-left: 16px solid #FFFFFF; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+.fmt-media.needs-tap:not(.is-playing) .fmt-play { opacity: 1; transform: none; }
+.is-reel button.fmt-media:hover .fmt-play { transform: scale(1.06); }
