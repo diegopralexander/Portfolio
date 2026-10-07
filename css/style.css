@@ -928,3 +928,8 @@ button.fmt-media:focus-visible { outline: 2px solid var(--accent); outline-offse
 .fmt-play::after { content: ""; position: absolute; left: 21px; top: 16px; border-left: 16px solid #FFFFFF; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
 .fmt-media.needs-tap:not(.is-playing) .fmt-play { opacity: 1; transform: none; }
 .is-reel button.fmt-media:hover .fmt-play { transform: scale(1.06); }
+
+/* Placement order: numbers first, test and learn at the end */
+.cs-after > .cs-results:first-child { margin-top: 0; }
+.cs-after > .cs-results + .cs-process { margin-top: clamp(48px, 7vw, 80px); }
+.cs-story > .cs-case:first-child { margin-top: 0; }

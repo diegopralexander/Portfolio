@@ -247,7 +247,7 @@
     };
     const resultsHtml = story.results ? [].concat(story.results).filter(Boolean).map(rsBlock).join('') : '';
 
-    const storyHtml = story.headline || (story.body || []).length ? `
+    const storyHtml = story.headline || (story.body || []).length || (story.case || []).length || (story.pillars || []).length ? `
       <section class="cs-story reveal">
         ${story.headline ? `<h2 class="cs-headline">${text(story.headline)}</h2>` : ''}
         ${story.subhead ? `<p class="cs-subhead">${text(story.subhead)}</p>` : ''}
@@ -382,7 +382,7 @@
       <div class="cs-content wrap">
         ${storyHtml}
         ${formatsHtml}
-        ${processHtml || resultsHtml || splitHtml ? `<div class="cs-after">${processHtml}${resultsHtml}${splitHtml}</div>` : ''}
+        ${processHtml || resultsHtml || splitHtml ? `<div class="cs-after">${resultsHtml}${processHtml}${splitHtml}</div>` : ''}
         ${proposalHtml}
         ${journalHtml}
         ${worksHtml}
